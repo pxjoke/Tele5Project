@@ -34,6 +34,9 @@ public class MySQLUserDAO implements UserDAO {
         return null;
     }
 
+    public List<User> getAll() {
+        return null;
+    }
 
 
 
