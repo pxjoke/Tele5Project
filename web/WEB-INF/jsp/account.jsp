@@ -1,3 +1,5 @@
+<%@ page import="controllers.DAO.beans.User" %>
+<jsp:useBean id="user" class="controllers.DAO.beans.User" scope="request" type="controllers.DAO.beans.User" />
 <div class="row">
 
     <div class="col-lg-12">
@@ -18,19 +20,19 @@
             <div class="panel-body">
                 <div class="list-group">
                     <div class="list-group-item list-group">
-                        <span class="badge">156</span>
-                        <i class="fa fa-fw fa-phone"></i> Total minutes:
+                        <span class="badge"> <jsp:getProperty name="user" property="internal"/></span>
+                        <i class="fa fa-fw fa-phone"></i> Internal minutes:
                     </div>
                     <div class="list-group-item list-group">
-                        <span class="badge">15</span>
-                        <i class="fa fa-fw fa-phone"></i> Free minutes:
+                        <span class="badge"> <jsp:getProperty name="user" property="external"/></span>
+                        <i class="fa fa-fw fa-phone"></i> External minutes:
                     </div>
                     <div class="list-group-item list-group">
-                        <span class="badge">30</span>
-                        <i class="fa fa-fw fa-mail-reply"></i> Total sms:
+                        <span class="badge"> <jsp:getProperty name="user" property="roaming"/></span>
+                        <i class="fa fa-fw fa-mail-reply"></i> Roaming minutes:
                     </div>
                     <div class="list-group-item list-group">
-                        <span class="badge">5</span>
+                        <span class="badge"> <jsp:getProperty name="user" property="sms"/></span>
                         <i class="fa fa-fw fa-mail-reply"></i> Free sms:
                     </div>
                 </div>
@@ -50,11 +52,13 @@
                 <div class="list-group">
                     <div class="list-group-item list-group list-group-item-success">
                         <span class="badge">active</span>
-                        <i class="fa fa-fw fa-mobile-phone"></i> +79818564377
+                        <i class="fa fa-fw fa-mobile-phone"></i>
+                        <jsp:getProperty name="user" property="phone"/>
                     </div>
                     <div href="#" class="list-group-item">
-                        <span class="badge">vip</span>
-                        <i class="fa fa-fw fa-user"></i> Gruzdev Dmitry
+                        <span class="badge"> <jsp:getProperty name="user" property="role"/></span>
+                        <i class="fa fa-fw fa-user"></i>
+                        <jsp:getProperty name="user" property="name"/>
                     </div>
                     <div href="#" class="list-group-item">
                         <span class="badge"></span>
@@ -76,12 +80,14 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Buy minutes</label>
+
                         <div class="col-sm-10">
                             <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Buy SMS</label>
+
                         <div class="col-sm-10">
                             <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                         </div>
@@ -89,6 +95,7 @@
 
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Internet</label>
+
                         <div class="col-sm-10">
                             <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                         </div>
@@ -96,6 +103,7 @@
 
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
                         <div class="col-sm-10">
                             <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                         </div>

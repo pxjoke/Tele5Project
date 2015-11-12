@@ -1,0 +1,8 @@
+<Context>
+    <Resource name="jdbc/tele5" auth="Container"
+              type="javax.sql.DataSource"
+              username="pxjoke"
+              password="12345"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/tele5"/>
+</Context>
