@@ -13,7 +13,7 @@ import java.util.List;
  * Created by pxjok on 13.11.2015.
  */
 public abstract class MySQLAbstractCRUD<T> {
-    protected List<T> getListByCriteria(Criteria criteria) {
+    public List<T> getListByCriteria(Criteria criteria) {
         List<T> list = new ArrayList<>();
         String criteriaExpression = (criteria == null) ? "" : criteria.getExpression();
         String sql = getSelectExpression() + criteriaExpression + ";";
@@ -30,6 +30,10 @@ public abstract class MySQLAbstractCRUD<T> {
         }
 
         return list;
+    }
+
+    public List<T> getAll(){
+        return getListByCriteria(null);
     }
 
     protected String getSelectExpression(){

@@ -24,7 +24,7 @@ public class MySQLUserCriteriaTest {
        // MySQLUserCriteria mySQLUserCriteria = new MySQLUserCriteria();
         mySQLUserCriteria.setId(String.valueOf(15));
         String expression = mySQLUserCriteria.getExpression();
-        Assert.assertTrue(" AND id=15".equals(expression));
+        Assert.assertTrue(" AND users.id=15".equals(expression));
     }
 
     @Test

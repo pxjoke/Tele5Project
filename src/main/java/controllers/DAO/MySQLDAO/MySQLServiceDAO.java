@@ -15,16 +15,9 @@ import java.util.List;
 public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements ServiceDAO {
 
 
-    private MySQLServiceCriteria mySQLServiceCriteria = null;
-    private static final String columns = "services.id, services.name, services.cost, services.description";
     private static final String table = "services";
-
-    @Override
-    public List<Service> getAll() {
-        List<Service> serviceList;
-        serviceList = getListByCriteria(null);
-        return serviceList;
-    }
+    private static final String columns = table + ".id, " + table + ".name, " +
+            table + ".cost, " + table + ".description";
 
     @Override
     protected String getColumns() {

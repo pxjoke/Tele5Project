@@ -22,7 +22,7 @@ public class MySQLServiceCriteriaTest {
     public void testGetExpressionWithId() throws Exception {
         mySQLServiceCriteria.setId(String.valueOf(15));
         String expression = mySQLServiceCriteria.getExpression();
-        assertTrue(" AND id=15".equals(expression));
+        assertTrue(" AND services.id=15".equals(expression));
     }
 
     @Test

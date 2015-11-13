@@ -1,12 +1,12 @@
 package controllers.DAO.criteria;
 
-import controllers.DAO.api.criteria.UserCriteria;
+import controllers.DAO.api.criteria.TariffCriteria;
 
 /**
- * Created by pxjok on 13.11.2015.
+ * Created by pxjok on 14.11.2015.
  */
-public class MySQLUserCriteria extends UserCriteria{
-    private static final String table = "users.";
+public class MySQLTariffCriteria extends TariffCriteria{
+    private static final String table = "tariffs.";
 
     @Override
     public String getExpression() {

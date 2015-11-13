@@ -11,13 +11,12 @@ public class User {
     private String name;
     private String password;
     private int status;
-    private int internal;
-    private int external;
-    private int roaming;
     private int sms;
     private int internet;
+    private int minutes;
 
-    public User(){}
+    public User() {
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -75,30 +74,6 @@ public class User {
         this.status = status;
     }
 
-    public int getInternal() {
-        return internal;
-    }
-
-    public void setInternal(int internal) {
-        this.internal = internal;
-    }
-
-    public int getExternal() {
-        return external;
-    }
-
-    public void setExternal(int external) {
-        this.external = external;
-    }
-
-    public int getRoaming() {
-        return roaming;
-    }
-
-    public void setRoaming(int roaming) {
-        this.roaming = roaming;
-    }
-
     public int getSms() {
         return sms;
     }
@@ -115,6 +90,14 @@ public class User {
         this.internet = internet;
     }
 
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -125,11 +108,9 @@ public class User {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +
-                ", internal=" + internal +
-                ", external=" + external +
-                ", roaming=" + roaming +
                 ", sms=" + sms +
                 ", internet=" + internet +
+                ", minutes=" + minutes +
                 '}';
     }
 }
