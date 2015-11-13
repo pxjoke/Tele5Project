@@ -1,4 +1,4 @@
-package controllers.DAO;
+package controllers.DAO.api;
 
 import controllers.DAO.beans.User;
 

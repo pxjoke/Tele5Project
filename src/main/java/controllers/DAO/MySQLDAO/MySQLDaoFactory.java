@@ -1,8 +1,8 @@
 package controllers.DAO.MySQLDAO;
 
-import controllers.DAO.DAOFactory;
-import controllers.DAO.ServiceDAO;
-import controllers.DAO.UserDAO;
+import controllers.DAO.api.DAOFactory;
+import controllers.DAO.api.ServiceDAO;
+import controllers.DAO.api.UserDAO;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -38,6 +38,6 @@ public class MySQLDaoFactory implements DAOFactory {
 
     @Override
     public ServiceDAO getServiceDAO() {
-        return null;
+        return new MySQLServiceDAO();
     }
 }

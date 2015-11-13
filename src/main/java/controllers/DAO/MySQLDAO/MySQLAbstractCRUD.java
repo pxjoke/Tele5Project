@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Created by pxjok on 13.11.2015.
  */
-public abstract class MySQLAbstractReader<T> {
-    public List<T> getAll() {
+public abstract class MySQLAbstractCRUD<T> {
+    public List<T> getListByCriteria() {
         List<T> list = new ArrayList<>();
         String sql = getSQLExpressionFromCriteria();
         try (Connection connection = MySQLDaoFactory.getConnection();
@@ -21,7 +21,6 @@ public abstract class MySQLAbstractReader<T> {
             while (resultSet.next()) {
                 list.add(parseResultSet(resultSet));
             }
-
 
         } catch (SQLException s) {
             s.printStackTrace();

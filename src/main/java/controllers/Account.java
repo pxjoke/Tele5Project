@@ -1,8 +1,8 @@
 package controllers;
 
-import controllers.DAO.DAOFactory;
+import controllers.DAO.api.DAOFactory;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
-import controllers.DAO.UserDAO;
+import controllers.DAO.api.UserDAO;
 import controllers.DAO.beans.User;
 
 import javax.servlet.ServletException;

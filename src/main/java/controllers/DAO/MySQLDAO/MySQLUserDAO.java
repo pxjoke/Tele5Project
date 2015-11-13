@@ -1,6 +1,6 @@
 package controllers.DAO.MySQLDAO;
 
-import controllers.DAO.UserDAO;
+import controllers.DAO.api.UserDAO;
 import controllers.DAO.beans.User;
 
 import java.sql.Connection;

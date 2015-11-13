@@ -1,3 +1,4 @@
+<jsp:useBean id="service" type="controllers.DAO.beans.Service" scope="request"/>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
