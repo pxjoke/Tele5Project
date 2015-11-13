@@ -6,6 +6,7 @@ import controllers.DAO.criteria.MySQLServiceCriteria;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,31 +16,24 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
 
 
     private MySQLServiceCriteria mySQLServiceCriteria = null;
-    private static final String columns = "service.id, service.name, service.cost, service.description";
-    private static final String table = "service";
-
-    public Service getById(int id){
-        mySQLServiceCriteria = new MySQLServiceCriteria();
-        mySQLServiceCriteria.setId(String.valueOf(id));
-        List<Service> list = getListByCriteria();
-        mySQLServiceCriteria = null;
-        if (list.isEmpty()) return null;
-        else return list.get(0);
-    }
+    private static final String columns = "services.id, services.name, services.cost, services.description";
+    private static final String table = "services";
 
     @Override
     public List<Service> getAll() {
-        return getListByCriteria();
+        List<Service> serviceList;
+        serviceList = getListByCriteria(null);
+        return serviceList;
     }
 
     @Override
-    protected String getSQLExpressionFromCriteria() {
-        StringBuffer sql = new StringBuffer("SELECT " + columns + " FROM " + table + " WHERE 1=1");
-        String tmp;
-        if (mySQLServiceCriteria != null){
-            if ((tmp = mySQLServiceCriteria.getId()) != null) sql.append(" AND id=" + tmp);
-        }
-        return sql.toString();
+    protected String getColumns() {
+        return columns;
+    }
+
+    @Override
+    protected String getTable() {
+        return table;
     }
 
     @Override

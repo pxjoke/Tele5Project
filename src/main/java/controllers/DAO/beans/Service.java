@@ -40,4 +40,14 @@ public class Service {
     public void setDescriprion(String descriprion) {
         this.descriprion = descriprion;
     }
+
+    @Override
+    public String toString() {
+        return "Service{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", descriprion='" + descriprion + '\'' +
+                '}';
+    }
 }

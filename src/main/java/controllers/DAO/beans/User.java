@@ -114,4 +114,22 @@ public class User {
     public void setInternet(int internet) {
         this.internet = internet;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", role='" + role + '\'' +
+                ", tariffId=" + tariffId +
+                ", phone='" + phone + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", status=" + status +
+                ", internal=" + internal +
+                ", external=" + external +
+                ", roaming=" + roaming +
+                ", sms=" + sms +
+                ", internet=" + internet +
+                '}';
+    }
 }
