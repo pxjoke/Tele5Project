@@ -1,9 +1,9 @@
-package controllers.DAO.criteria;
+package controllers.DAO.api.criteria;
 
 /**
  * Created by pxjok on 13.11.2015.
  */
-public class ServiceCriteria {
+public abstract class UserCriteria implements Criteria{
     private String id;
 
     public String getId() {

@@ -2,7 +2,7 @@ package controllers.DAO.MySQLDAO;
 
 import controllers.DAO.api.ServiceDAO;
 import controllers.DAO.beans.Service;
-import controllers.DAO.criteria.ServiceCriteria;
+import controllers.DAO.criteria.MySQLServiceCriteria;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,15 +14,15 @@ import java.util.List;
 public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements ServiceDAO {
 
 
-    private ServiceCriteria serviceCriteria = null;
+    private MySQLServiceCriteria mySQLServiceCriteria = null;
     private static final String columns = "service.id, service.name, service.cost, service.description";
     private static final String table = "service";
 
     public Service getById(int id){
-        serviceCriteria = new ServiceCriteria();
-        serviceCriteria.setId(String.valueOf(id));
+        mySQLServiceCriteria = new MySQLServiceCriteria();
+        mySQLServiceCriteria.setId(String.valueOf(id));
         List<Service> list = getListByCriteria();
-        serviceCriteria = null;
+        mySQLServiceCriteria = null;
         if (list.isEmpty()) return null;
         else return list.get(0);
     }
@@ -36,8 +36,8 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
     protected String getSQLExpressionFromCriteria() {
         StringBuffer sql = new StringBuffer("SELECT " + columns + " FROM " + table + " WHERE 1=1");
         String tmp;
-        if (serviceCriteria != null){
-            if ((tmp = serviceCriteria.getId()) != null) sql.append(" AND id=" + tmp);
+        if (mySQLServiceCriteria != null){
+            if ((tmp = mySQLServiceCriteria.getId()) != null) sql.append(" AND id=" + tmp);
         }
         return sql.toString();
     }
