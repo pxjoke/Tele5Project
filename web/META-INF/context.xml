@@ -4,5 +4,5 @@
               username="pxjoke"
               password="12345"
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/tele5"/>
+              url="jdbc:mysql://localhost:3306/tele5?useUnicode=true&amp;characterEncoding=utf8"/>
 </Context>

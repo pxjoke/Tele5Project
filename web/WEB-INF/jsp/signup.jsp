@@ -11,33 +11,52 @@
 <div class="row">
     <div class="col-lg-7">
         <div class="well bs-component">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="signup" method="post">
                 <fieldset>
-                    <legend>Sign Up</legend>
+                    <legend>Add new user</legend>
                     <div class="form-group">
-                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                        <label for="inputName" class="col-lg-2 control-label">Name</label>
 
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                            <input type="text" id="inputName" class="form-control" name="name" placeholder="John Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone" class="col-lg-2 control-label">Phone</label>
+
+                        <div class="col-lg-9">
+                            <input type="text" id="inputPhone" class="form-control" name="phone"
+                                   placeholder="+79818564789">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
 
                         <div class="col-lg-9">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            <input type="password" id="inputPassword" class="form-control" name="password"
+                                   placeholder="">
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+                        <label for="inputRole" class="col-lg-2 control-label">Role</label>
 
                         <div class="col-lg-9">
-                            <textarea class="form-control" rows="3" id="textArea"></textarea>
-                            <span class="help-block">Enter your Passport details.</span>
+                            <select id="inputRole" class="form-control" name="role">
+                                <option>user</option>
+                                <option>manager</option>
+                                <option>admin</option>
+                            </select>
                         </div>
                     </div>
 
-
+                    <div class="form-group">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <input type="checkbox" name="status" id="inputStatus" value="1">
+                            <input type="checkbox" name="status"  value="0" hidden checked>
+                            Status VIP
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
                             <button type="submit" class="btn btn-primary">Submit</button>
