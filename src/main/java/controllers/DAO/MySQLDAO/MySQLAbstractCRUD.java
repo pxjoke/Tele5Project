@@ -32,16 +32,57 @@ public abstract class MySQLAbstractCRUD<T> {
         return list;
     }
 
-    public List<T> getAll(){
+    public List<T> getAll() {
         return getListByCriteria(null);
     }
 
-    protected String getSelectExpression(){
+    public boolean insert(T bean) {
+        if (bean == null) return false;
+        String sql = getInsertExpression(bean) + ";";
+        try (Connection connection = MySQLDaoFactory.getConnection();
+             Statement statement = connection.createStatement()) {
+            return statement.executeUpdate(sql) > 0 ? true : false;
+        } catch (SQLException s) {
+            s.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean deleteByCriteria(Criteria criteria) {
+        String criteriaExpression = (criteria == null) ? "" : criteria.getExpression();
+        String sql = getDeleteExpression() + criteriaExpression + ";";
+        try (Connection connection = MySQLDaoFactory.getConnection();
+             Statement statement = connection.createStatement()) {
+            return statement.executeUpdate(sql) > 0 ? true : false;
+
+        } catch (SQLException s) {
+            s.printStackTrace();
+        }
+        return false;
+    }
+
+
+
+    protected String getDeleteExpression() {
+        return "DELETE FROM " + getTable() + " WHERE 1=1 ";
+    }
+
+    protected String getInsertExpression(T bean) {
+        return "INSERT INTO " + getTable() + " (" +
+                getColumns().replace(getTable() + ".id,", "") + ") VALUES" +
+                " (" + parseBean(bean) + ")";
+
+    }
+
+    protected String getSelectExpression() {
         return "SELECT " + getColumns() + " FROM " + getTable() + " WHERE 1=1";
     }
 
     protected abstract String getColumns();
+
     protected abstract String getTable();
 
     protected abstract T parseResultSet(ResultSet resultSet) throws SQLException;
+
+    protected abstract String parseBean(T bean);
 }

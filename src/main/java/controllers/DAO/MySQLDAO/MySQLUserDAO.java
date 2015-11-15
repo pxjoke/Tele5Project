@@ -2,6 +2,7 @@ package controllers.DAO.MySQLDAO;
 
 import controllers.DAO.api.UserDAO;
 import controllers.DAO.api.criteria.Criteria;
+import controllers.DAO.api.criteria.UserCriteria;
 import controllers.DAO.beans.User;
 import controllers.DAO.criteria.MySQLUserCriteria;
 
@@ -17,9 +18,23 @@ import java.util.List;
 public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
     private final String table = "users";
     private final String columns = table + ".id, " + table + ".phone, " +
-            table + " .name, " +table + ".password, " + table + ".status, " +
+            table + ".name, " + table + ".password, " + table + ".status, " +
             table + ".sms, " + table + ".internet, " + table + ".role, " + table + ".minutes";
 
+
+    @Override
+    protected String parseBean(User bean) {
+        StringBuffer tmp = new StringBuffer();
+        tmp.append("'"+bean.getPhone()+"'" + ", ");
+        tmp.append("'"+bean.getName()+"'" + ", ");
+        tmp.append("'"+bean.getPassword()+"'" + ", ");
+        tmp.append(bean.getStatus() + ", ");
+        tmp.append(bean.getSms() + ", ");
+        tmp.append(bean.getInternet() + ", ");
+        tmp.append("'"+bean.getRole()+"'" + ", ");
+        tmp.append(bean.getMinutes());
+        return tmp.toString();
+    }
 
     @Override
     public User getById(int id) {
@@ -27,6 +42,13 @@ public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
         criteria.setId(String.valueOf(id));
         List<User> userList = getListByCriteria(criteria);
         return userList.isEmpty() ? null : userList.get(0);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        UserCriteria criteria = new MySQLUserCriteria();
+        criteria.setId(String.valueOf(id));
+        return deleteByCriteria(criteria);
     }
 
     @Override

@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserDAO {
     User getById(int id);
     List<User> getAll();
+    boolean insert(User bean);
+    boolean deleteById(int id);
 }

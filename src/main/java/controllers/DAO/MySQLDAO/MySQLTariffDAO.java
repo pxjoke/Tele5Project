@@ -21,6 +21,11 @@ public class MySQLTariffDAO extends MySQLAbstractCRUD<Tariff> implements TariffD
 
 
     @Override
+    protected String parseBean(Tariff bean) {
+        return null;
+    }
+
+    @Override
     public Tariff getById(int id) {
         MySQLTariffCriteria criteria = new MySQLTariffCriteria();
         criteria.setId(String.valueOf(id));
