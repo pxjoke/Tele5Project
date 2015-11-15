@@ -45,6 +45,10 @@
                                 <td><c:out value="${user.role}"/></td>
                                 <td><c:out value="${user.internet}"/></td>
                                 <td><c:out value="${user.sms}"/></td>
+                                <td>
+                                    <a class="btn btn-warning" href="/user_edit?id=${user.id}"><i class="fa fa-edit fa-fw"></i></a>
+                                    <a class="btn btn-danger" href="/user_delete?id=${user.id}"><i class="fa fa-remove fa-fw"></i></a>
+                                </td>
                             </tr>
                         </c:forEach>
 

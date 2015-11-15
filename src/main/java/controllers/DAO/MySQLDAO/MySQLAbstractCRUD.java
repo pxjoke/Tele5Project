@@ -61,11 +61,31 @@ public abstract class MySQLAbstractCRUD<T> {
         return false;
     }
 
+    public boolean updateByCriteria(T bean, Criteria criteria){
+        if (bean == null) return false;
+        String criteriaExpression = (criteria == null) ? "" : criteria.getExpression();
+        String sql = getUpdateExpression(bean) + criteriaExpression + ";";
+        try (Connection connection = MySQLDaoFactory.getConnection();
+             Statement statement = connection.createStatement()) {
+            return statement.executeUpdate(sql) > 0 ? true : false;
+
+        } catch (SQLException s) {
+            s.printStackTrace();
+        }
+        return false;
+    }
+
 
 
     protected String getDeleteExpression() {
         return "DELETE FROM " + getTable() + " WHERE 1=1 ";
     }
+
+    protected String getUpdateExpression(T bean){
+        return "UPDATE " + getTable() + " SET " + parseBeanForUpdate(bean) + " WHERE 1=1 ";
+    }
+
+    protected abstract String parseBeanForUpdate(T bean);
 
     protected String getInsertExpression(T bean) {
         return "INSERT INTO " + getTable() + " (" +

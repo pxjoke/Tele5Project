@@ -19,6 +19,10 @@ public class MySQLTariffDAO extends MySQLAbstractCRUD<Tariff> implements TariffD
             table + ".user_status, " + table + ".minutes, " + table + ".sms, " +
             table + ".internet, "+ table + ".count";
 
+    @Override
+    protected String parseBeanForUpdate(Tariff bean) {
+        return null;
+    }
 
     @Override
     protected String parseBean(Tariff bean) {

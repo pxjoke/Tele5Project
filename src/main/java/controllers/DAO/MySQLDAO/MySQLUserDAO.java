@@ -36,6 +36,28 @@ public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
         return tmp.toString();
     }
 
+
+    @Override
+    protected String parseBeanForUpdate(User bean) {
+        StringBuffer tmp = new StringBuffer();
+        tmp.append("phone='"+bean.getPhone()+"'" + ", ");
+        tmp.append("name='"+bean.getName()+"'" + ", ");
+        tmp.append("password='"+bean.getPassword()+"'" + ", ");
+        tmp.append("status=" + bean.getStatus() + ", ");
+        tmp.append("sms=" + bean.getSms() + ", ");
+        tmp.append("internet=" + bean.getInternet() + ", ");
+        tmp.append("role='"+bean.getRole()+"'" + ", ");
+        tmp.append("minutes=" + bean.getMinutes());
+        return tmp.toString();
+    }
+
+    @Override
+    public boolean updateById(int id, User bean) {
+        UserCriteria criteria = new MySQLUserCriteria();
+        criteria.setId(String.valueOf(id));
+        return updateByCriteria(bean, criteria);
+    }
+
     @Override
     public User getById(int id) {
         MySQLUserCriteria criteria = new MySQLUserCriteria();

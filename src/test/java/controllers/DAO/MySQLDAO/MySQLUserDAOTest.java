@@ -74,6 +74,22 @@ public class MySQLUserDAOTest {
         }
         status = mySQLUserDAO.deleteById(Integer.valueOf(serviceList.get(serviceList.size() - 1).getId()));
 
+    }
+
+    @Test
+    public void testUpdateById() throws Exception {
+        System.out.println("Update expr: " + mySQLUserDAO.getUpdateExpression(defaultUser));
+        User u = mySQLUserDAO.getById(1);
+        System.out.println("------Before Update--------");
+        System.out.println(u);
+        System.out.println("------After Update---------");
+        boolean stat = mySQLUserDAO.updateById(1, defaultUser);
+        assertTrue(stat);
+        System.out.println(mySQLUserDAO.getById(1));
+        stat = mySQLUserDAO.updateById(1, null);
+        assertFalse(stat);
+        System.out.println("---------------------------");
+        mySQLUserDAO.updateById(1, u);
 
     }
 

@@ -20,6 +20,11 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
             table + ".cost, " + table + ".description";
 
     @Override
+    protected String parseBeanForUpdate(Service bean) {
+        return null;
+    }
+
+    @Override
     protected String parseBean(Service bean) {
         return null;
     }

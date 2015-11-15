@@ -12,4 +12,5 @@ public interface UserDAO {
     List<User> getAll();
     boolean insert(User bean);
     boolean deleteById(int id);
+    boolean updateById(int id, User bean);
 }
