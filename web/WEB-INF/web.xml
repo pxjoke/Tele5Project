@@ -11,14 +11,21 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
+
     <jsp-config>
         <jsp-property-group>
             <description>header and footer settings</description>
             <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/error-400.jsp</url-pattern>
             <url-pattern>/WEB-INF/jsp/*</url-pattern>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
+
+    <!--<error-page>-->
+        <!--<error-code>400</error-code>-->
+        <!--<location>/WEB-INF/error-400.jsp</location>-->
+    <!--</error-page>-->
 
 </web-app>

@@ -19,7 +19,9 @@ import java.io.IOException;
 public class UserEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        int id = Integer.valueOf(request.getParameter("id"));
+        String tmp = request.getParameter("id");
+
+        int id = Integer.valueOf(tmp);
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
@@ -38,7 +40,13 @@ public class UserEdit extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(request.getParameter("id") == null){
+            response.sendError(400);
+            return;
+        }
+
         int id = Integer.valueOf(request.getParameter("id"));
+
         DAOFactory factory = new MySQLDaoFactory();
         UserDAO userDAO = factory.getUserDAO();
         User user = userDAO.getById(id);

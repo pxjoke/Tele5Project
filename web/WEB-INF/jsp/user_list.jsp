@@ -2,7 +2,7 @@
 <jsp:useBean id="users" scope="request" type="java.util.List<controllers.DAO.beans.User>"/>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">User List</h1>
+        <h1 class="page-header">User List <a class="btn btn-success" href="/signup">+ <i class="fa fa-user"></i> </a> </h1>
         <ol class="breadcrumb">
             <li><a href="index.html">Home</a>
             </li>
@@ -46,8 +46,8 @@
                                 <td><c:out value="${user.internet}"/></td>
                                 <td><c:out value="${user.sms}"/></td>
                                 <td>
-                                    <a class="btn btn-warning" href="/user_edit?id=${user.id}"><i class="fa fa-edit fa-fw"></i></a>
-                                    <a class="btn btn-danger" href="/user_delete?id=${user.id}"><i class="fa fa-remove fa-fw"></i></a>
+                                    <a class="btn btn-warning btn-xs" href="/user_edit?id=${user.id}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-danger btn-xs" href="/user_delete?id=${user.id}"><i class="fa fa-remove"></i></a>
                                 </td>
                             </tr>
                         </c:forEach>
