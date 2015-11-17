@@ -4,11 +4,11 @@ package controllers.DAO.beans;
  * Created by pxjok on 17.11.2015.
  */
 public class Account {
-    int id;
-    int userId;
-    String openDate;
-    String closeDate;
-    boolean closed;
+    private int id;
+    private int userId;
+    private String openDate;
+    private String closeDate;
+    private boolean closed;
 
     public int getId() {
         return id;
