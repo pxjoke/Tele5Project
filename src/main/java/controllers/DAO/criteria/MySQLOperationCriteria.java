@@ -1,5 +1,6 @@
 package controllers.DAO.criteria;
 
+import controllers.DAO.api.criteria.OperationCriteria;
 import controllers.DAO.api.criteria.UserServiceCriteria;
 
 
@@ -7,7 +8,7 @@ import controllers.DAO.api.criteria.UserServiceCriteria;
  * Created by pxjok on 13.11.2015.
  */
 public class MySQLOperationCriteria extends OperationCriteria {
-    private static final String table = "user_services.";
+    private static final String table = "operations.";
 
     @Override
     public String getExpression() {

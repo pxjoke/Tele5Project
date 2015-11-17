@@ -67,4 +67,17 @@ public class Operation {
     public void setServiceId(int serviceId) {
         this.serviceId = serviceId;
     }
+
+    @Override
+    public String toString() {
+        return "Operation{" +
+                "id=" + id +
+                ", accountId=" + accountId +
+                ", type='" + type + '\'' +
+                ", cost=" + cost +
+                ", amount=" + amount +
+                ", time='" + time + '\'' +
+                ", serviceId=" + serviceId +
+                '}';
+    }
 }
