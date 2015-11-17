@@ -25,32 +25,32 @@ public class MySQLDaoFactory implements DAOFactory {
     private static String url = "jdbc:mysql://localhost:3306/tele5";
 
     public static Connection getConnection() throws SQLException {
-        InitialContext initContext = null;
-        try {
-            initContext = new InitialContext();
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-        DataSource ds = null;
-        try {
-            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/tele5");
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-        Connection conn = ds.getConnection();
-        return conn;
-
+//        InitialContext initContext = null;
 //        try {
-//            Class.forName("com.mysql.jdbc.Driver").newInstance();
-//        } catch (InstantiationException e) {
-//            e.printStackTrace();
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
+//            initContext = new InitialContext();
+//        } catch (NamingException e) {
 //            e.printStackTrace();
 //        }
-//        Connection connection = DriverManager.getConnection(url, user, password);
-//        return connection;
+//        DataSource ds = null;
+//        try {
+//            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/tele5");
+//        } catch (NamingException e) {
+//            e.printStackTrace();
+//        }
+//        Connection conn = ds.getConnection();
+//        return conn;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Connection connection = DriverManager.getConnection(url, user, password);
+        return connection;
     }
 
     @Override

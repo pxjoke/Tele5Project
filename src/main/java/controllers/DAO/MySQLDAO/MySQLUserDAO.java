@@ -19,11 +19,12 @@ public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
     private final String table = "users";
     private final String columns = table + ".id, " + table + ".phone, " +
             table + ".name, " + table + ".password, " + table + ".status, " +
-            table + ".sms, " + table + ".internet, " + table + ".role, " + table + ".minutes";
+            table + ".sms, " + table + ".internet, " + table + ".role, " +
+            table + ".minutes, " + table + ".tariff ";
 
 
     @Override
-    protected String parseBean(User bean) {
+    protected String parseBeanForInsert(User bean) {
         StringBuffer tmp = new StringBuffer();
         tmp.append("'"+bean.getPhone()+"'" + ", ");
         tmp.append("'"+bean.getName()+"'" + ", ");
@@ -32,7 +33,8 @@ public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
         tmp.append(bean.getSms() + ", ");
         tmp.append(bean.getInternet() + ", ");
         tmp.append("'"+bean.getRole()+"'" + ", ");
-        tmp.append(bean.getMinutes());
+        tmp.append(bean.getMinutes() + ", ");
+        tmp.append(bean.getTariffId());
         return tmp.toString();
     }
 
@@ -47,7 +49,8 @@ public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
         tmp.append("sms=" + bean.getSms() + ", ");
         tmp.append("internet=" + bean.getInternet() + ", ");
         tmp.append("role='"+bean.getRole()+"'" + ", ");
-        tmp.append("minutes=" + bean.getMinutes());
+        tmp.append("minutes=" + bean.getMinutes() + ", ");
+        tmp.append("tariff=" + bean.getTariffId());
         return tmp.toString();
     }
 
@@ -95,6 +98,7 @@ public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
         user.setSms(resultSet.getInt("sms"));
         user.setInternet(resultSet.getInt("internet"));
         user.setRole(resultSet.getString("role"));
+        user.setTariffId(resultSet.getInt("tariff"));
         return user;
     }
 }

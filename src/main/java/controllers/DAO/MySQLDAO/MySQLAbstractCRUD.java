@@ -90,7 +90,7 @@ public abstract class MySQLAbstractCRUD<T> {
     protected String getInsertExpression(T bean) {
         return "INSERT INTO " + getTable() + " (" +
                 getColumns().replace(getTable() + ".id,", "") + ") VALUES" +
-                " (" + parseBean(bean) + ")";
+                " (" + parseBeanForInsert(bean) + ")";
 
     }
 
@@ -104,5 +104,9 @@ public abstract class MySQLAbstractCRUD<T> {
 
     protected abstract T parseResultSet(ResultSet resultSet) throws SQLException;
 
-    protected abstract String parseBean(T bean);
+    protected abstract String parseBeanForInsert(T bean);
+
+    protected String toQuote(String string){
+        return "'" + string + "'";
+    }
 }

@@ -12,4 +12,7 @@ import java.util.List;
 public interface TariffDAO {
     List<Tariff> getAll();
     Tariff getById(int id);
+    boolean insert(Tariff bean);
+    boolean deleteById(int id);
+    boolean updateById(int id, Tariff bean);
 }

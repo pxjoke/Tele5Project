@@ -20,17 +20,10 @@
             <div class="panel-body">
                 <div class="list-group">
                     <div class="list-group-item list-group">
-                        <span class="badge"> <jsp:getProperty name="user" property="internal"/></span>
-                        <i class="fa fa-fw fa-phone"></i> Internal minutes:
+                        <span class="badge"> <jsp:getProperty name="user" property="minutes"/></span>
+                        <i class="fa fa-fw fa-phone"></i> Free minutes:
                     </div>
-                    <div class="list-group-item list-group">
-                        <span class="badge"> <jsp:getProperty name="user" property="external"/></span>
-                        <i class="fa fa-fw fa-phone"></i> External minutes:
-                    </div>
-                    <div class="list-group-item list-group">
-                        <span class="badge"> <jsp:getProperty name="user" property="roaming"/></span>
-                        <i class="fa fa-fw fa-mail-reply"></i> Roaming minutes:
-                    </div>
+
                     <div class="list-group-item list-group">
                         <span class="badge"> <jsp:getProperty name="user" property="sms"/></span>
                         <i class="fa fa-fw fa-mail-reply"></i> Free sms:
@@ -61,8 +54,8 @@
                         <jsp:getProperty name="user" property="name"/>
                     </div>
                     <div href="#" class="list-group-item">
-                        <span class="badge"></span>
-                        <i class="fa fa-fw fa-mail-forward"></i> pxjoke@gmail.com
+                        <span class="badge"><jsp:getProperty name="user" property="tariffId" /></span>
+                        <i class="fa fa-fw fa-mail-forward"></i> Tariff ID
                     </div>
                 </div>
                 <div class="text-right">

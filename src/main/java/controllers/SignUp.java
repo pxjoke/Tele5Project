@@ -34,6 +34,7 @@ public class SignUp extends HttpServlet {
         user.setPassword(password);
         user.setStatus(Integer.valueOf(status));
         user.setRole(role);
+        user.setTariffId(1);
         DAOFactory factory = new MySQLDaoFactory();
         UserDAO userDAO = factory.getUserDAO();
         userDAO.insert(user);

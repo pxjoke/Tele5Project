@@ -29,6 +29,7 @@
                             <th>Role</th>
                             <th>Internet</th>
                             <th>SMS</th>
+                            <th>Tariff ID</th>
                             <th>Edit</th>
                         </tr>
                         </thead>
@@ -45,6 +46,7 @@
                                 <td><c:out value="${user.role}"/></td>
                                 <td><c:out value="${user.internet}"/></td>
                                 <td><c:out value="${user.sms}"/></td>
+                                <td class="text-center"><c:out value="${user.tariffId}"/></td>
                                 <td>
                                     <a class="btn btn-warning btn-xs" href="/user_edit?id=${user.id}"><i class="fa fa-edit"></i></a>
                                     <a class="btn btn-danger btn-xs" href="/user_delete?id=${user.id}"><i class="fa fa-remove"></i></a>

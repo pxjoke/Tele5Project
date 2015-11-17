@@ -25,7 +25,7 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
     }
 
     @Override
-    protected String parseBean(Service bean) {
+    protected String parseBeanForInsert(Service bean) {
         return null;
     }
 

@@ -28,6 +28,7 @@ public class MySQLUserDAOTest {
         defaultUser.setInternet(15);
         defaultUser.setRole("user");
         defaultUser.setMinutes(615);
+        defaultUser.setTariffId(1);
 
     }
 

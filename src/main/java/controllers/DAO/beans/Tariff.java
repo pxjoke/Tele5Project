@@ -12,6 +12,24 @@ public class Tariff {
     private double internet;
     private int count;
     private int serviceId;
+    private String serviceName;
+    private double serviceCost;
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public double getServiceCost() {
+        return serviceCost;
+    }
+
+    public void setServiceCost(double serviceCost) {
+        this.serviceCost = serviceCost;
+    }
 
     public int getId() {
         return id;
