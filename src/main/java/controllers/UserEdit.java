@@ -27,12 +27,14 @@ public class UserEdit extends HttpServlet {
         String password = request.getParameter("password");
         String status = request.getParameter("status");
         String role = request.getParameter("role");
+
         User user = new User();
         user.setName(name);
         user.setPhone(phone);
         user.setPassword(password);
         user.setStatus(Integer.valueOf(status));
         user.setRole(role);
+        user.setTariffId(1);//TODO add tariffId to page form
         DAOFactory factory = new MySQLDaoFactory();
         UserDAO userDAO = factory.getUserDAO();
         userDAO.updateById(id, user);
