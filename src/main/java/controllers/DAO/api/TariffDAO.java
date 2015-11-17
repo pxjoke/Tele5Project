@@ -9,10 +9,6 @@ import java.util.List;
 /**
  * Created by pxjok on 14.11.2015.
  */
-public interface TariffDAO {
-    List<Tariff> getAll();
-    Tariff getById(int id);
-    boolean insert(Tariff bean);
-    boolean deleteById(int id);
-    boolean updateById(int id, Tariff bean);
+public interface TariffDAO extends DataAccessObject<Tariff>{
+
 }
