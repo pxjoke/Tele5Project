@@ -1,6 +1,7 @@
 package controllers.DAO.MySQLDAO;
 
 import controllers.DAO.api.ServiceDAO;
+import controllers.DAO.api.criteria.ServiceCriteria;
 import controllers.DAO.beans.Service;
 import controllers.DAO.criteria.MySQLServiceCriteria;
 
@@ -21,12 +22,43 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
 
     @Override
     protected String parseBeanForUpdate(Service bean) {
-        return null;
+        StringBuilder tmp = new StringBuilder();
+        tmp.append("name=" + toQuote(bean.getName()) + ", ");
+        tmp.append("cost=" + bean.getCost() + ", ");
+        tmp.append("description=" + toQuote(bean.getDescriprion()));
+        return tmp.toString();
     }
 
     @Override
     protected String parseBeanForInsert(Service bean) {
-        return null;
+
+        StringBuilder tmp = new StringBuilder();
+        tmp.append(toQuote(bean.getName()) + ", ");
+        tmp.append(bean.getCost() + ", ");
+        tmp.append(toQuote(bean.getDescriprion()));
+        return tmp.toString();
+    }
+
+    @Override
+    public Service getById(int id) {
+        MySQLServiceCriteria criteria = new MySQLServiceCriteria();
+        criteria.setId(String.valueOf(id));
+        List<Service> list = getListByCriteria(criteria);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        ServiceCriteria criteria = new MySQLServiceCriteria();
+        criteria.setId(String.valueOf(id));
+        return deleteByCriteria(criteria);
+    }
+
+    @Override
+    public boolean updateById(int id, Service bean) {
+        ServiceCriteria criteria = new MySQLServiceCriteria();
+        criteria.setId(String.valueOf(id));
+        return updateByCriteria(bean, criteria);
     }
 
     @Override

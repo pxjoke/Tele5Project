@@ -9,4 +9,8 @@ import java.util.List;
  */
 public interface ServiceDAO {
     List<Service> getAll();
+    Service getById(int id);
+    boolean insert(Service bean);
+    boolean deleteById(int id);
+    boolean updateById(int id, Service bean);
 }

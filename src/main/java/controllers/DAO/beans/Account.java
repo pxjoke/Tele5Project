@@ -8,7 +8,7 @@ public class Account {
     int userId;
     String openDate;
     String closeDate;
-    boolean closeStatus;
+    boolean closed;
 
     public int getId() {
         return id;
@@ -42,11 +42,22 @@ public class Account {
         this.closeDate = closeDate;
     }
 
-    public boolean isCloseStatus() {
-        return closeStatus;
+    public boolean isClosed() {
+        return closed;
     }
 
-    public void setCloseStatus(boolean closeStatus) {
-        this.closeStatus = closeStatus;
+    public void setClosed(boolean closed) {
+        this.closed = closed;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", openDate='" + openDate + '\'' +
+                ", closeDate='" + closeDate + '\'' +
+                ", closed=" + closed +
+                '}';
     }
 }
