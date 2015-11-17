@@ -1,12 +1,13 @@
 package controllers.DAO.criteria;
 
 import controllers.DAO.api.criteria.AccountCriteria;
+import controllers.DAO.api.criteria.UserServiceCriteria;
 
 
 /**
  * Created by pxjok on 13.11.2015.
  */
-public class MySQLUserServiceCriteria extends AccountCriteria {
+public class MySQLUserServiceCriteria extends UserServiceCriteria {
     private static final String table = "user_services.";
 
     @Override
