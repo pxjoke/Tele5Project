@@ -8,6 +8,15 @@ public class Service {
     private String name;
     private double cost;
     private String descriprion;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;
@@ -48,6 +57,7 @@ public class Service {
                 ", name='" + name + '\'' +
                 ", cost=" + cost +
                 ", descriprion='" + descriprion + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

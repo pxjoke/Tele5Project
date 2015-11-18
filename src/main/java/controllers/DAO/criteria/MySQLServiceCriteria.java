@@ -1,5 +1,6 @@
 package controllers.DAO.criteria;
 
+import controllers.DAO.api.Utils;
 import controllers.DAO.api.criteria.ServiceCriteria;
 
 /**
@@ -12,6 +13,7 @@ public class MySQLServiceCriteria extends ServiceCriteria{
         StringBuffer expression = new StringBuffer();
         String tmp;
         if((tmp = getId()) != null) expression.append(" AND " + table + "id=" + tmp);
+        if((tmp = getName()) != null) expression.append(" AND " + table + "name=" + Utils.toQuote(tmp));
         return expression.toString();
     }
 }

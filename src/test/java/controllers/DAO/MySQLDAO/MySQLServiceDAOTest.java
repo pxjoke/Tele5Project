@@ -23,6 +23,7 @@ public class MySQLServiceDAOTest {
         defaultService.setCost(315);
         defaultService.setName("First blood!");
         defaultService.setDescriprion("Very good!");
+        defaultService.setType("passive");
 
     }
 
@@ -95,5 +96,14 @@ public class MySQLServiceDAOTest {
             System.out.println(t);
         }
         System.out.println("-----------------------------");
+    }
+
+    @Test
+    public void testGetByName() throws Exception {
+        Service bean = mySQLServiceDAO.getByName("Profi");
+        Service beanNull = mySQLServiceDAO.getByName("NOTHING");
+        assertNotNull(bean);
+        System.out.println(bean);
+        assertNull(beanNull);
     }
 }

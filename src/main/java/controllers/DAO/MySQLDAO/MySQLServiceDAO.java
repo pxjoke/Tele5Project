@@ -18,14 +18,15 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
 
     private static final String table = "services";
     private static final String columns = table + ".id, " + table + ".name, " +
-            table + ".cost, " + table + ".description";
+            table + ".cost, " + table + ".description, " + table + ".type";
 
     @Override
     protected String parseBeanForUpdate(Service bean) {
         StringBuilder tmp = new StringBuilder();
         tmp.append("name=" + toQuote(bean.getName()) + ", ");
         tmp.append("cost=" + bean.getCost() + ", ");
-        tmp.append("description=" + toQuote(bean.getDescriprion()));
+        tmp.append("description=" + toQuote(bean.getDescriprion()) + ", ");
+        tmp.append("type=" + toQuote(bean.getType()));
         return tmp.toString();
     }
 
@@ -35,7 +36,8 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
         StringBuilder tmp = new StringBuilder();
         tmp.append(toQuote(bean.getName()) + ", ");
         tmp.append(bean.getCost() + ", ");
-        tmp.append(toQuote(bean.getDescriprion()));
+        tmp.append(toQuote(bean.getDescriprion()) + ", ");
+        tmp.append(toQuote(bean.getType()));
         return tmp.toString();
     }
 
@@ -62,6 +64,14 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
     }
 
     @Override
+    public Service getByName(String name) {
+        ServiceCriteria criteria = new MySQLServiceCriteria();
+        criteria.setName(name);
+        List<Service> list = getListByCriteria(criteria);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
     protected String getColumns() {
         return columns;
     }
@@ -78,6 +88,7 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
         service.setName(resultSet.getString("name"));
         service.setDescriprion(resultSet.getString("description"));
         service.setCost(resultSet.getDouble("cost"));
+        service.setType(resultSet.getString("type"));
         return service;
     }
 }

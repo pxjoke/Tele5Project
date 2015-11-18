@@ -11,9 +11,9 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
-    <error-page>
-        <location>/WEB-INF/jsp/error-400.jsp</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<location>/WEB-INF/jsp/error-400.jsp</location>-->
+    <!--</error-page>-->
     <jsp-config>
         <jsp-property-group>
             <description>header and footer settings</description>

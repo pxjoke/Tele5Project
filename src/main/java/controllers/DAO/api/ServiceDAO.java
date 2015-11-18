@@ -8,5 +8,5 @@ import java.util.List;
  * Created by pxjok on 12.11.2015.
  */
 public interface ServiceDAO extends DataAccessObject<Service>{
-
+    Service getByName(String name);
 }
