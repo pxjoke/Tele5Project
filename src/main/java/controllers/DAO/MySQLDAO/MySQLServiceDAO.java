@@ -7,7 +7,6 @@ import controllers.DAO.criteria.MySQLServiceCriteria;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,15 +17,19 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
 
     private static final String table = "services";
     private static final String columns = table + ".id, " + table + ".name, " +
-            table + ".cost, " + table + ".description, " + table + ".type";
+            table + ".cost, " + table + ".description, " + table + ".type, "
+            + table + ".minutes, "+ table + ".sms, " + table + ".internet";
 
     @Override
     protected String parseBeanForUpdate(Service bean) {
         StringBuilder tmp = new StringBuilder();
         tmp.append("name=" + toQuote(bean.getName()) + ", ");
         tmp.append("cost=" + bean.getCost() + ", ");
-        tmp.append("description=" + toQuote(bean.getDescriprion()) + ", ");
-        tmp.append("type=" + toQuote(bean.getType()));
+        tmp.append("description=" + toQuote(bean.getDescription()) + ", ");
+        tmp.append("type=" + toQuote(bean.getType()) + ", ");
+        tmp.append("minutes=" + bean.getMinutes() + ", ");
+        tmp.append("sms=" + bean.getSms() + ", ");
+        tmp.append("internet=" + bean.getInternet());
         return tmp.toString();
     }
 
@@ -36,8 +39,11 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
         StringBuilder tmp = new StringBuilder();
         tmp.append(toQuote(bean.getName()) + ", ");
         tmp.append(bean.getCost() + ", ");
-        tmp.append(toQuote(bean.getDescriprion()) + ", ");
-        tmp.append(toQuote(bean.getType()));
+        tmp.append(toQuote(bean.getDescription()) + ", ");
+        tmp.append(toQuote(bean.getType()) + ", ");
+        tmp.append(bean.getMinutes() + ", ");
+        tmp.append(bean.getSms() + ", ");
+        tmp.append(bean.getInternet());
         return tmp.toString();
     }
 
@@ -86,9 +92,12 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
         Service service = new Service();
         service.setId(resultSet.getInt("id"));
         service.setName(resultSet.getString("name"));
-        service.setDescriprion(resultSet.getString("description"));
+        service.setDescription(resultSet.getString("description"));
         service.setCost(resultSet.getDouble("cost"));
         service.setType(resultSet.getString("type"));
+        service.setMinutes(resultSet.getInt("minutes"));
+        service.setSms(resultSet.getInt("sms"));
+        service.setInternet(resultSet.getInt("internet"));
         return service;
     }
 }

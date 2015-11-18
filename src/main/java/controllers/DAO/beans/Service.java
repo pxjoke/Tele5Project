@@ -7,8 +7,35 @@ public class Service {
     private int id;
     private String name;
     private double cost;
-    private String descriprion;
+    private String description;
     private String type;
+    private int minutes;
+    private int sms;
+    private int internet;
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    public int getSms() {
+        return sms;
+    }
+
+    public void setSms(int sms) {
+        this.sms = sms;
+    }
+
+    public int getInternet() {
+        return internet;
+    }
+
+    public void setInternet(int internet) {
+        this.internet = internet;
+    }
 
     public String getType() {
         return type;
@@ -42,12 +69,12 @@ public class Service {
         this.cost = cost;
     }
 
-    public String getDescriprion() {
-        return descriprion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriprion(String descriprion) {
-        this.descriprion = descriprion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -56,8 +83,11 @@ public class Service {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", cost=" + cost +
-                ", descriprion='" + descriprion + '\'' +
+                ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
+                ", minutes=" + minutes +
+                ", sms=" + sms +
+                ", internet=" + internet +
                 '}';
     }
 }

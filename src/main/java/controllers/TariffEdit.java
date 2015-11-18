@@ -4,10 +4,8 @@ import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
 import controllers.DAO.api.TariffDAO;
-import controllers.DAO.api.UserDAO;
 import controllers.DAO.beans.Service;
 import controllers.DAO.beans.Tariff;
-import controllers.DAO.beans.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +43,7 @@ public class TariffEdit extends HttpServlet {
 
         Service service = new Service();
         service.setType("tariff");
-        service.setDescriprion(description);
+        service.setDescription(description);
         service.setName(name);
         service.setCost(Double.valueOf(cost));
 

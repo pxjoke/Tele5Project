@@ -1,8 +1,6 @@
 package controllers.DAO.MySQLDAO;
 
-import controllers.DAO.beans.Account;
 import controllers.DAO.beans.Service;
-import controllers.DAO.beans.Tariff;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +20,7 @@ public class MySQLServiceDAOTest {
         defaultService = new Service();
         defaultService.setCost(315);
         defaultService.setName("First blood!");
-        defaultService.setDescriprion("Very good!");
+        defaultService.setDescription("Very good!");
         defaultService.setType("passive");
 
     }

@@ -79,7 +79,7 @@
 
                 <div class="panel-body">
 
-                    <p>${service.descriprion}</p>
+                    <p>${service.description}</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
                 </div>
                 <div class="panel-footer">
