@@ -1,6 +1,7 @@
+<jsp:useBean id="service" scope="request" class="controllers.DAO.beans.Service" />
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">New Service Page</h1>
+        <h1 class="page-header">Update Tariff</h1>
         <%--<ol class="breadcrumb">--%>
             <%--<li><a href="index.html">Home</a>--%>
             <%--</li>--%>
@@ -11,49 +12,44 @@
 <div class="row">
     <div class="col-lg-7">
         <div class="well bs-component">
-            <form class="form-horizontal" action="service_add" method="post">
+            <form class="form-horizontal" action="service_edit" method="post">
                 <fieldset>
-                    <legend>Add new service</legend>
+                    <legend>Add new tariff</legend>
                     <div class="form-group">
                         <label for="inputName" class="col-lg-2 control-label">Name</label>
 
                         <div class="col-lg-9">
-                            <input type="text" id="inputName" class="form-control" name="name">
+                            <input type="text" id="inputName" class="form-control" value="${service.name}" name="name">
                         </div>
                     </div>
-
-
-
-
                     <div class="form-group">
-                        <label for="inputMinutes" class="col-lg-2 control-label">Minutes:</label>
+                        <label for="inputMinute" class="col-lg-2 control-label">Minute cost: </label>
 
                         <div class="col-lg-9">
-                            <input type="text" id="inputMinutes" class="form-control" name="minutes">
+                            <input type="text" id="inputMinute" class="form-control" value="${service.minutes}" name="minutes">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="inputSMS" class="col-lg-2 control-label">SMS:</label>
+                        <label for="inputSMS" class="col-lg-2 control-label">SMS cost</label>
 
                         <div class="col-lg-9">
-                            <input type="text" id="inputSMS" class="form-control" name="sms">
+                            <input type="text" id="inputSMS" class="form-control" value="${service.sms}" name="sms">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="inputInternet" class="col-lg-2 control-label">Internet:</label>
+                        <label for="inputInternet" class="col-lg-2 control-label">Internet cost</label>
 
                         <div class="col-lg-9">
-                            <input type="text" id="inputInternet" class="form-control" name="internet">
+                            <input type="text" id="inputInternet" class="form-control" value="${service.internet}" name="internet">
                         </div>
                     </div>
+
 
                     <div class="form-group">
                         <label for="inputPrice" class="col-lg-2 control-label">Price:</label>
 
                         <div class="col-lg-9">
-                            <input type="text" id="inputPrice" class="form-control" name="cost">
+                            <input type="text" id="inputPrice" class="form-control" value="${service.cost}" name="cost">
                         </div>
                     </div>
 
@@ -61,9 +57,10 @@
                         <label for="inputDescription" class="col-lg-2 control-label">Description:</label>
 
                         <div class="col-lg-9">
-                            <textarea id="inputDescription" class="form-control" rows="4" name="description"></textarea>
+                            <textarea id="inputDescription" class="form-control" rows="4"  name="description"><c:out value="${service.description}"/></textarea>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="inputType" class="col-lg-2 control-label">Type: </label>
 
@@ -74,6 +71,14 @@
                             </select>
                         </div>
                     </div>
+                    <%--<div class="form-group">--%>
+                        <%--<div class="col-lg-8 col-lg-offset-2">--%>
+                            <%--<input type="checkbox" name="user_status" id="inputStatus" value="1">--%>
+                            <%--<input type="checkbox" name="user_status"  value="0" hidden checked>--%>
+                            <%--For VIP only--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <input type="text" name="serviceId" value="${service.id}" hidden>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
                             <button type="submit" class="btn btn-primary">Submit</button>

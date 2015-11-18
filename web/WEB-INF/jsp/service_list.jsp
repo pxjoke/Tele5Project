@@ -23,7 +23,9 @@
                             <th>Name</th>
                             <th>Cost</th>
                             <th>Type</th>
-                            <th>Description</th>
+                            <th>Minutes</th>
+                            <th>SMS</th>
+                            <th>Internet</th>
                             <th>Edit</th>
                         </tr>
                         </thead>
@@ -32,10 +34,12 @@
                         <c:forEach items="${services}" var="service" varStatus="status1">
                             <tr>
                                 <td><c:out value="${service.id}"/></td>
-                                <td><a href="/tariff_info?id=${service.id}"><c:out value="${service.name}"/></a></td>
+                                <td><a href="/service_info?id=${service.id}"><c:out value="${service.name}"/></a></td>
                                 <td><c:out value="${service.cost}"/></td>
                                 <td><c:out value="${service.type}"/></td>
-                                <td><c:out value="${service.description}"/></td>
+                                <td><c:out value="${service.minutes}"/></td>
+                                <td><c:out value="${service.sms}"/></td>
+                                <td><c:out value="${service.internet}"/></td>
                                 <td>
                                     <a class="btn btn-warning btn-xs" href="/service_edit?id=${service.id}"><i class="fa fa-edit"></i></a>
                                     <a class="btn btn-danger btn-xs" href="/service_delete?id=${service.id}"><i class="fa fa-remove"></i></a>
