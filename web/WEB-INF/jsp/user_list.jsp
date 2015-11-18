@@ -38,7 +38,7 @@
                     <c:forEach items="${users}" var="user" varStatus="status1">
                         <tr>
                             <td><c:out value="${user.id}"/></td>
-                            <td><c:out value="${user.name}"/></td>
+                            <td><a href="/account?id=${user.id}"><c:out value="${user.name}"/></a></td>
                             <td><c:out value="${user.phone}"/></td>
                             <td><c:out value="${user.password}"/></td>
                             <td><c:out value="${user.minutes}"/></td>

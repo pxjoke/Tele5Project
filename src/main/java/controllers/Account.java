@@ -22,9 +22,14 @@ public class Account extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(request.getParameter("id") == null){
+            response.sendError(400);
+            return;
+        }
+        int id = Integer.valueOf(request.getParameter("id"));
         DAOFactory factory = new MySQLDaoFactory();
         UserDAO userDAO = factory.getUserDAO();
-        User user  = userDAO.getById(1);
+        User user  = userDAO.getById(id);
         request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/jsp/account.jsp").forward(request, response);
     }
