@@ -1,12 +1,10 @@
 package controllers;
 
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
-import controllers.DAO.api.DAOFactory;
-import controllers.DAO.api.ServiceDAO;
-import controllers.DAO.api.TariffDAO;
-import controllers.DAO.api.UserDAO;
-import controllers.DAO.beans.Service;
+import controllers.DAO.api.*;
 import controllers.DAO.beans.Tariff;
+import controllers.DAO.beans.User;
+import controllers.DAO.beans.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -20,9 +18,9 @@ import java.io.IOException;
 /**
  * Created by pxjok on 15.11.2015.
  */
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
-@WebServlet(name = "tariff_delete", urlPatterns = "/tariff_delete")
-public class TariffDelete extends HttpServlet {
+@ServletSecurity (@HttpConstraint(rolesAllowed = {"admin", "manager", "user"}))
+@WebServlet(name = "user_service_delete", urlPatterns = "/user_service_delete")
+public class UserServiceDelete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -35,16 +33,19 @@ public class TariffDelete extends HttpServlet {
         }
         int id = Integer.valueOf(request.getParameter("id"));
 
+
         DAOFactory factory = new MySQLDaoFactory();
-        ServiceDAO serviceDAO = factory.getServiceDAO();
-        TariffDAO tariffDAO = factory.getTariffDao();
-        Tariff tariff = tariffDAO.getById(id);
-        if (tariff == null) {
+        UserServiceDAO userServiceDao = factory.getUserServiceDao();
+        String userNumber = request.getUserPrincipal().getName();
+        UserDAO userDAO = factory.getUserDAO();
+        User user = userDAO.getByPhone(userNumber);
+        boolean status = userServiceDao.deleteByIdAndUserId(id, user.getId());
+
+        if (!status) {
             response.sendError(400);
             return;
         }
-        serviceDAO.deleteById(tariff.getServiceId());
 
-        response.sendRedirect("/tariff_list");
+        response.sendRedirect("/account?id=" + user.getId());
     }
 }

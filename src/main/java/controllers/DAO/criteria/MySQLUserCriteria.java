@@ -13,6 +13,7 @@ public class MySQLUserCriteria extends UserCriteria{
         StringBuffer expression = new StringBuffer();
         String tmp;
         if((tmp = getId()) != null) expression.append(" AND " + table + "id=" + tmp);
+        if((tmp = getPhone()) != null) expression.append(" AND " + table + "phone=" + tmp);
         return expression.toString();
     }
 }

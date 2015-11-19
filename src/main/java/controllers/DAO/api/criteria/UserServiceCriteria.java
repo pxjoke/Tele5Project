@@ -5,6 +5,15 @@ package controllers.DAO.api.criteria;
  */
 public abstract class UserServiceCriteria implements Criteria{
     private String id;
+    private String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getId() {
         return id;

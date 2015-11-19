@@ -8,6 +8,8 @@ import controllers.DAO.beans.Service;
 import controllers.DAO.beans.Tariff;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import java.io.IOException;
 /**
  * Created by pxjok on 15.11.2015.
  */
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
 @WebServlet(name = "service_edit", urlPatterns = "/service_edit")
 public class ServiceEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

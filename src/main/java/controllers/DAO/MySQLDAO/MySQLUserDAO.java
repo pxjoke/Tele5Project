@@ -55,6 +55,14 @@ public class MySQLUserDAO extends MySQLAbstractCRUD<User> implements UserDAO {
     }
 
     @Override
+    public User getByPhone(String phone) {
+        UserCriteria userCriteria = new MySQLUserCriteria();
+        userCriteria.setPhone(phone);
+        List<User> userList = getListByCriteria(userCriteria);
+        return userList.isEmpty() ? null : userList.get(0);
+    }
+
+    @Override
     public boolean updateById(int id, User bean) {
         UserCriteria criteria = new MySQLUserCriteria();
         criteria.setId(String.valueOf(id));

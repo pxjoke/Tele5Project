@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 public class MySQLUserServiceDAOTest {
     private MySQLUserServiceDAO mySQLUserServiceDAO;
     UserService defaultUserService;
+
     @Before
     public void setUp() throws Exception {
         mySQLUserServiceDAO = new MySQLUserServiceDAO();
@@ -38,7 +39,7 @@ public class MySQLUserServiceDAOTest {
     @Test
     public void testGetAll() throws Exception {
         List<UserService> list = mySQLUserServiceDAO.getAll();
-        for(UserService i: list){
+        for (UserService i : list) {
             System.out.println(i);
         }
         assertNotNull(list);
@@ -69,7 +70,7 @@ public class MySQLUserServiceDAOTest {
         assertFalse(status);
         System.out.println("-------After Insertion----------");
         List<UserService> list = mySQLUserServiceDAO.getAll();
-        for(UserService t : list){
+        for (UserService t : list) {
             System.out.println(t);
         }
         status = mySQLUserServiceDAO.deleteById(Integer.valueOf(list.get(list.size() - 1).getId()));
@@ -78,10 +79,11 @@ public class MySQLUserServiceDAOTest {
 
     @Test
     public void testDeleteById() throws Exception {
+        System.out.println("DELETE expr: " + mySQLUserServiceDAO.getDeleteExpression());
         mySQLUserServiceDAO.insert(defaultUserService);
         System.out.println("-------BEFORE DELETE----------");
         List<UserService> list = mySQLUserServiceDAO.getAll();
-        for(UserService t : list){
+        for (UserService t : list) {
             System.out.println(t);
         }
         System.out.println("------------------------------");
@@ -90,9 +92,19 @@ public class MySQLUserServiceDAOTest {
         assertTrue(status);
         System.out.println("-------After DELETE----------");
         list = mySQLUserServiceDAO.getAll();
-        for(UserService t : list){
+        for (UserService t : list) {
             System.out.println(t);
         }
         System.out.println("-----------------------------");
+    }
+
+    @Test
+    public void testGetAllByUserId() throws Exception {
+
+        List<UserService> list = mySQLUserServiceDAO.getAllByUserId(1);
+        for (UserService t : list) {
+            System.out.println(t);
+        }
+
     }
 }

@@ -15,6 +15,7 @@ public class MySQLUserServiceCriteria extends UserServiceCriteria {
         StringBuffer expression = new StringBuffer();
         String tmp;
         if((tmp = getId()) != null) expression.append(" AND " + table + "id=" + tmp);
+        if((tmp = getUserId()) != null) expression.append(" AND " + table + "user=" + tmp);
         return expression.toString();
     }
 }

@@ -1,5 +1,6 @@
-<%@ page import="controllers.DAO.beans.User" %>
 <jsp:useBean id="user" class="controllers.DAO.beans.User" scope="request" type="controllers.DAO.beans.User"/>
+<jsp:useBean id="tariff" class="controllers.DAO.beans.Tariff" scope="request" type="controllers.DAO.beans.Tariff"/>
+<jsp:useBean id="user_services" scope="request" type="java.util.List<controllers.DAO.beans.UserService>"/>
 <div class="row">
 
     <div class="col-lg-12">
@@ -78,30 +79,20 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th>Name</th>
+                                    <th>Cost</th>
+                                    <th>Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach items="${user_services}" var="user_service"  varStatus="status">
                                 <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <td>${status.index + 1}</td>
+                                    <td>${user_service.serviceName}</td>
+                                    <td>${user_service.serviceCost}</td>
+                                    <td class="text-center"><a href="/user_service_delete?id=${user_service.id}" class="label label-danger"><i class="fa fa-remove"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -112,22 +103,22 @@
             <div class="col-lg-6">
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> Tariff info: </h3>
+                        <h3 class="panel-title"><i class="fa fa-mobile-phone fa-fw"></i> Tariff "${tariff.name}" </h3>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
                             <div class="list-group-item list-group">
-                                <span class="badge"> <jsp:getProperty name="user" property="minutes"/></span>
+                                <span class="badge"> <jsp:getProperty name="tariff" property="minutes"/></span>
                                 <i class="fa fa-fw fa-phone"></i> Minute cost:
                             </div>
 
                             <div class="list-group-item list-group">
-                                <span class="badge"> <jsp:getProperty name="user" property="sms"/></span>
+                                <span class="badge"> <jsp:getProperty name="tariff" property="sms"/></span>
                                 <i class="fa fa-fw fa-envelope"></i> SMS cost:
                             </div>
 
                             <div class="list-group-item list-group">
-                                <span class="badge"> <jsp:getProperty name="user" property="internet"/></span>
+                                <span class="badge"> <jsp:getProperty name="tariff" property="internet"/></span>
                                 <i class="fa fa-fw fa-globe"></i> Mb cost:
                             </div>
                         </div>

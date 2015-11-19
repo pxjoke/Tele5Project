@@ -95,12 +95,27 @@ public abstract class MySQLAbstractCRUD<T> {
     }
 
     protected String getSelectExpression() {
-        return "SELECT " + getColumns() + " FROM " + getTable() + " WHERE 1=1";
+
+        return "SELECT " + getColumns() + getAdditionalColumns() +
+                " FROM " + getTable() + getAdditionalTables() + " WHERE 1=1 " + getAdditionalCondition();
     }
 
     protected abstract String getColumns();
 
     protected abstract String getTable();
+
+    protected String getAdditionalTables(){
+        return "";
+    }
+
+    protected String getAdditionalColumns(){
+        return "";
+    }
+
+    protected String getAdditionalCondition(){
+        return "";
+    }
+
 
     protected abstract T parseResultSet(ResultSet resultSet) throws SQLException;
 

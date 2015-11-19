@@ -7,6 +7,24 @@ public class UserService {
     private int id;
     private int userId;
     private int serviceId;
+    private String serviceName;
+    private double serviceCost;
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public double getServiceCost() {
+        return serviceCost;
+    }
+
+    public void setServiceCost(double serviceCost) {
+        this.serviceCost = serviceCost;
+    }
 
     public int getId() {
         return id;
@@ -38,6 +56,8 @@ public class UserService {
                 "id=" + id +
                 ", userId=" + userId +
                 ", serviceId=" + serviceId +
+                ", serviceName='" + serviceName + '\'' +
+                ", serviceCost=" + serviceCost +
                 '}';
     }
 }

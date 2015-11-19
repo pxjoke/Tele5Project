@@ -14,6 +14,9 @@ public class MySQLServiceCriteria extends ServiceCriteria{
         String tmp;
         if((tmp = getId()) != null) expression.append(" AND " + table + "id=" + tmp);
         if((tmp = getName()) != null) expression.append(" AND " + table + "name=" + Utils.toQuote(tmp));
+        if((tmp = getTypePackgage()) != null) expression.append(" AND " + table + "name=" + Utils.toQuote(tmp));
+        if((tmp = getTypePassive()) != null) expression.append(" AND " + table + "name=" + Utils.toQuote(tmp));
+        if((tmp = getTypeTariff()) != null) expression.append(" AND " + table + "name=" + Utils.toQuote(tmp));
         return expression.toString();
     }
 }
