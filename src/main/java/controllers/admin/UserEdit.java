@@ -1,4 +1,4 @@
-package controllers;
+package controllers.admin;
 
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
@@ -18,7 +18,7 @@ import java.io.IOException;
  * Created by pxjok on 15.11.2015.
  */
 @ServletSecurity(@HttpConstraint(rolesAllowed = {"admin", "manager"}))
-@WebServlet(name = "user_edit", urlPatterns = "/user_edit")
+@WebServlet(name = "user_edit", urlPatterns = "/admin/user_edit")
 public class UserEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");

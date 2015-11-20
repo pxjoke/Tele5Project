@@ -18,3 +18,7 @@ body {
 .das-form .control-label{
 
 }
+
+.navbar-danger{
+  background-color: #e74c3c;
+}

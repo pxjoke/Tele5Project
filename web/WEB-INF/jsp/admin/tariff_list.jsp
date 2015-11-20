@@ -31,7 +31,7 @@
                         <c:forEach items="${tariffs}" var="tariff" varStatus="status1">
                             <tr>
                                 <td><c:out value="${tariff.id}"/></td>
-                                <td><a href="/tariff_info?id=${tariff.id}"><c:out value="${tariff.name}"/></a></td>
+                                <td><a href="/admin/tariff_info?id=${tariff.id}"><c:out value="${tariff.name}"/></a></td>
                                 <td><c:out value="${tariff.userStatus}"/></td>
                                 <td><c:out value="${tariff.minutes}"/></td>
                                 <td><c:out value="${tariff.sms}"/></td>
@@ -39,8 +39,8 @@
                                 <td><c:out value="${tariff.serviceId}"/></td>
                                 <td><c:out value="${tariff.count}"/></td>
                                 <td>
-                                    <a class="btn btn-warning btn-xs" href="/tariff_edit?id=${tariff.id}"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-danger btn-xs" href="/tariff_delete?id=${tariff.id}"><i class="fa fa-remove"></i></a>
+                                    <a class="btn btn-warning btn-xs" href="/admin/tariff_edit?id=${tariff.id}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-danger btn-xs" href="/admin/tariff_delete?id=${tariff.id}"><i class="fa fa-remove"></i></a>
                                 </td>
                             </tr>
                         </c:forEach>

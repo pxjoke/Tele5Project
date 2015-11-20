@@ -1,4 +1,4 @@
-package controllers;
+package controllers.admin;
 
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.MySQLDAO.MySQLUserDAO;
@@ -19,8 +19,8 @@ import java.util.Locale;
 /**
  * Created by pxjok on 09.11.2015.
  */
-@WebServlet(name = "signup", urlPatterns = "/signup")
-public class SignUp extends HttpServlet {
+@WebServlet(name = "signup", urlPatterns = "/admin/add_user")
+public class UserAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");

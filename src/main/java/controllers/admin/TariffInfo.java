@@ -1,9 +1,10 @@
-package controllers;
+package controllers.admin;
 
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
 import controllers.DAO.api.TariffDAO;
+import controllers.DAO.beans.Service;
 import controllers.DAO.beans.Tariff;
 
 import javax.servlet.ServletException;
@@ -14,30 +15,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
- * Created by pxjok on 15.11.2015.
+ * Created by pxjok on 18.11.2015.
  */
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
-@WebServlet(name = "service_delete", urlPatterns = "/service_delete")
-public class ServiceDelete extends HttpServlet {
+@WebServlet(name = "tariff_info", urlPatterns = "/admin/tariff_info")
+public class TariffInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        if (request.getParameter("id") == null) {
+        if(request.getParameter("id") == null){
             response.sendError(400);
             return;
         }
         int id = Integer.valueOf(request.getParameter("id"));
 
         DAOFactory factory = new MySQLDaoFactory();
+        TariffDAO tariffDAO = factory.getTariffDao();
+        Tariff tariff = tariffDAO.getById(id);
+        if(tariff == null){
+            response.sendError(400);
+            return;
+        }
         ServiceDAO serviceDAO = factory.getServiceDAO();
-
-        serviceDAO.deleteById(id);
-
-        response.sendRedirect("/service_list");
+        Service service = serviceDAO.getById(tariff.getServiceId()  );
+        request.setAttribute("tariff", tariff);
+        request.setAttribute("service", service);
+        request.getRequestDispatcher("/WEB-INF/jsp/tariff_info.jsp").forward(request, response);
     }
 }

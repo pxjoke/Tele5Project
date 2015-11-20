@@ -1,4 +1,4 @@
-package controllers;
+package controllers.admin;
 
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
@@ -13,23 +13,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by pxjok on 18.11.2015.
  */
-@WebServlet(name = "service_list", urlPatterns = "/service_list")
-public class ServiceList extends HttpServlet {
+@WebServlet(name = "service_info", urlPatterns = "/admin/service_info")
+public class ServiceInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+       
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(request.getParameter("id") == null){
+            response.sendError(400);
+            return;
+        }
+        int id = Integer.valueOf(request.getParameter("id"));
+
         DAOFactory factory = new MySQLDaoFactory();
         ServiceDAO serviceDAO = factory.getServiceDAO();
-        List<Service> list = serviceDAO.getAll();
-        request.setAttribute("services", list);
-        request.getRequestDispatcher("/WEB-INF/jsp/service_list.jsp").forward(request, response);
+        Service service = serviceDAO.getById(id);
+        if(service == null){
+            response.sendError(400);
+            return;
+        }
+        request.setAttribute("service", service);
+        request.getRequestDispatcher("/WEB-INF/jsp/service_info.jsp").forward(request, response);
     }
 }

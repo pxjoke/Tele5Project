@@ -1,4 +1,4 @@
-package controllers;
+package controllers.admin;
 
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.MySQLDAO.MySQLUserDAO;
@@ -20,7 +20,7 @@ import java.util.List;
  * Created by pxjok on 15.11.2015.
  */
 @ServletSecurity(@HttpConstraint(rolesAllowed = {"admin", "manager"}))
-@WebServlet(name = "user_list", urlPatterns = "/user_list")
+@WebServlet(name = "user_list", urlPatterns = "/admin/user_list")
 public class UserList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -31,6 +31,6 @@ public class UserList extends HttpServlet {
         UserDAO userDAO = new MySQLUserDAO();
         List<User> userList = userDAO.getAll();
         request.setAttribute("users", userList);
-        request.getRequestDispatcher("/WEB-INF/jsp/user_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/user_list.jsp").forward(request, response);
     }
 }
