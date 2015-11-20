@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form class="form-signin" action="j_security_check" >
+    <form class="form-signin" action="j_security_check" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="text" id="inputEmail" class="form-control" placeholder="Email address"  name="j_username" required autofocus>
