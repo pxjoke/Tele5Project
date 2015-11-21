@@ -50,6 +50,14 @@ public class MySQLTariffDAO extends MySQLAbstractCRUD<Tariff> implements TariffD
     }
 
     @Override
+    public Tariff getByServiceId(int id) {
+        MySQLTariffCriteria criteria = new MySQLTariffCriteria();
+        criteria.setServiceId(String.valueOf(id));
+        List<Tariff> tariffList = getListByCriteria(criteria);
+        return tariffList.isEmpty() ? null : tariffList.get(0);
+    }
+
+    @Override
     public boolean deleteById(int id) {
         TariffCriteria criteria = new MySQLTariffCriteria();
         criteria.setId(String.valueOf(id));

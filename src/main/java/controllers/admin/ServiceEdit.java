@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
@@ -33,19 +34,20 @@ public class ServiceEdit extends HttpServlet {
         String serviceId = request.getParameter("serviceId");
 
 
-        Service service = new Service();
-        service.setType("tariff");
+        Service service = Connections.getFactory().getServiceDAO().getById(Integer.valueOf(serviceId));
         service.setDescription(description);
         service.setName(name);
         service.setCost(Double.valueOf(cost));
-        service.setMinutes(Integer.valueOf(minutes));
-        service.setInternet(Integer.valueOf(internet));
-        service.setSms(Integer.valueOf(sms));
+        if(service.getType().equals("package")){
+            service.setMinutes(Integer.valueOf(minutes));
+            service.setInternet(Integer.valueOf(internet));
+            service.setSms(Integer.valueOf(sms));
+        }
 
 
-        DAOFactory factory = new MySQLDaoFactory();
-        ServiceDAO  serviceDAO = factory.getServiceDAO();
-        serviceDAO.updateById(Integer.valueOf(serviceId), service);
+
+
+        Connections.getFactory().getServiceDAO().updateById(Integer.valueOf(serviceId), service);
 
         response.sendRedirect("/admin/service_list");
     }

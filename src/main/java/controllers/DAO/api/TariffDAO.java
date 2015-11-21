@@ -10,5 +10,5 @@ import java.util.List;
  * Created by pxjok on 14.11.2015.
  */
 public interface TariffDAO extends DataAccessObject<Tariff>{
-
+    Tariff getByServiceId(int id);
 }

@@ -5,6 +5,15 @@ package controllers.DAO.api.criteria;
  */
 public abstract class TariffCriteria implements Criteria{
     private String id;
+    private String serviceId;
+
+    public String getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
+    }
 
     public String getId() {
         return id;

@@ -22,27 +22,30 @@
                             <input type="text" id="inputName" class="form-control" value="${service.name}" name="name">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputMinute" class="col-lg-2 control-label">Minute cost: </label>
+                    <c:if test="${service.type.equals('package')}">
+                        <div class="form-group">
+                            <label for="inputMinute" class="col-lg-2 control-label">Minute cost: </label>
 
-                        <div class="col-lg-9">
-                            <input type="text" id="inputMinute" class="form-control" value="${service.minutes}" name="minutes">
+                            <div class="col-lg-9">
+                                <input type="text" id="inputMinute" class="form-control" value="${service.minutes}" name="minutes">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputSMS" class="col-lg-2 control-label">SMS cost</label>
+                        <div class="form-group">
+                            <label for="inputSMS" class="col-lg-2 control-label">SMS cost</label>
 
-                        <div class="col-lg-9">
-                            <input type="text" id="inputSMS" class="form-control" value="${service.sms}" name="sms">
+                            <div class="col-lg-9">
+                                <input type="text" id="inputSMS" class="form-control" value="${service.sms}" name="sms">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputInternet" class="col-lg-2 control-label">Internet cost</label>
+                        <div class="form-group">
+                            <label for="inputInternet" class="col-lg-2 control-label">Internet cost</label>
 
-                        <div class="col-lg-9">
-                            <input type="text" id="inputInternet" class="form-control" value="${service.internet}" name="internet">
+                            <div class="col-lg-9">
+                                <input type="text" id="inputInternet" class="form-control" value="${service.internet}" name="internet">
+                            </div>
                         </div>
-                    </div>
+                    </c:if>
+
 
 
                     <div class="form-group">
@@ -61,17 +64,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="inputType" class="col-lg-2 control-label">Type: </label>
 
-                        <div class="col-lg-9">
-                            <select id="inputType" class="form-control" name="type">
-                                <option>passive</option>
-                                <option>package</option>
-                            </select>
-                        </div>
-                    </div>
-                    <%--<div class="form-group">--%>
+                <%--<div class="form-group">--%>
                         <%--<div class="col-lg-8 col-lg-offset-2">--%>
                             <%--<input type="checkbox" name="userStatus" id="inputStatus" value="1">--%>
                             <%--<input type="checkbox" name="userStatus"  value="0" hidden checked>--%>

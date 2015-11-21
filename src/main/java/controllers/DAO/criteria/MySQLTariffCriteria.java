@@ -13,6 +13,7 @@ public class MySQLTariffCriteria extends TariffCriteria{
         StringBuffer expression = new StringBuffer();
         String tmp;
         if((tmp = getId()) != null) expression.append(" AND " + table + "id=" + tmp);
+        if((tmp = getServiceId()) != null) expression.append(" AND " + table + "service=" + tmp);
         return expression.toString();
     }
 }

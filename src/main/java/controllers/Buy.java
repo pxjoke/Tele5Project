@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.DAO.api.criteria.AccountCriteria;
+import controllers.DAO.api.criteria.TariffCriteria;
 import controllers.DAO.beans.*;
 
 import javax.servlet.ServletException;
@@ -59,13 +60,17 @@ public class Buy extends HttpServlet {
         Connections.getFactory().getOperationDao().insert(operation);
 
         if (service.getType().equals("tariff")) {
-            user.setTariffId(serviceId);
+            Tariff tariff = Connections.getFactory().getTariffDao().getByServiceId(serviceId);
+            user.setTariffId(tariff.getId());
             Connections.getFactory().getUserDAO().updateById(user.getId(), user);
             request.getSession().setAttribute("user_session", user);
         } else if (service.getType().equals("package")) {
-            user.setMinutes(service.getMinutes());
-            user.setSms(service.getSms());
-            user.setInternet(service.getInternet());
+            int min = user.getMinutes();
+            int sms = user.getSms();
+            int net = user.getInternet();
+            user.setMinutes(min + service.getMinutes());
+            user.setSms(sms + service.getSms());
+            user.setInternet(net + service.getInternet());
             Connections.getFactory().getUserDAO().updateById(user.getId(), user);
             request.getSession().setAttribute("user_session", user);
         }else if(service.getType().equals("passive")){
