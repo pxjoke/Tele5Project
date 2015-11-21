@@ -32,6 +32,6 @@ public class TariffList extends HttpServlet {
         TariffDAO tariffDAO = factory.getTariffDao();
         List<Tariff> list = tariffDAO.getAll();
         request.setAttribute("tariffs", list);
-        request.getRequestDispatcher("/WEB-INF/jsp/tariff_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/tariff_list.jsp").forward(request, response);
     }
 }

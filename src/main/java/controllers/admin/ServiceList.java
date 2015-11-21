@@ -30,6 +30,6 @@ public class ServiceList extends HttpServlet {
         ServiceDAO serviceDAO = factory.getServiceDAO();
         List<Service> list = serviceDAO.getAll();
         request.setAttribute("services", list);
-        request.getRequestDispatcher("/WEB-INF/jsp/service_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/service_list.jsp").forward(request, response);
     }
 }

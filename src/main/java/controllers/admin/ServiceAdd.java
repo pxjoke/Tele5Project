@@ -52,6 +52,6 @@ public class ServiceAdd extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/service_add.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/service_add.jsp").forward(request, response);
     }
 }

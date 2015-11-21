@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.UserDAO;
@@ -21,41 +22,34 @@ import java.io.IOException;
 @WebServlet(name = "user_edit", urlPatterns = "/admin/user_edit")
 public class UserEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String tmp = request.getParameter("id");
 
-        int id = Integer.valueOf(tmp);
+        String tmp = request.getParameter("id");
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String status = request.getParameter("status");
         String role = request.getParameter("role");
 
-        User user = new User();
+        int id = Integer.valueOf(tmp);
+        User user = Connections.getFactory().getUserDAO().getById(id);
         user.setName(name);
         user.setPhone(phone);
         user.setPassword(password);
         user.setStatus(Integer.valueOf(status));
         user.setRole(role);
-        user.setTariffId(1);//TODO add tariffId to page form
-        DAOFactory factory = new MySQLDaoFactory();
-        UserDAO userDAO = factory.getUserDAO();
-        userDAO.updateById(id, user);
-        response.sendRedirect("/user_list");
+        Connections.getFactory().getUserDAO().updateById(id, user);
+        response.sendRedirect("/admin/user_list");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getParameter("id") == null){
+        String phone = request.getParameter("phone");
+        if (phone == null) {
             response.sendError(400);
             return;
         }
 
-        int id = Integer.valueOf(request.getParameter("id"));
-
-        DAOFactory factory = new MySQLDaoFactory();
-        UserDAO userDAO = factory.getUserDAO();
-        User user = userDAO.getById(id);
+        User user = Connections.getFactory().getUserDAO().getByPhone(phone);
         request.setAttribute("user", user);
-        request.getRequestDispatcher("/WEB-INF/jsp/user_edit.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/user_edit.jsp").forward(request, response);
     }
 }

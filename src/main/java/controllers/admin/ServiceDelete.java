@@ -38,6 +38,6 @@ public class ServiceDelete extends HttpServlet {
 
         serviceDAO.deleteById(id);
 
-        response.sendRedirect("/service_list");
+        response.sendRedirect("/admin/service_list");
     }
 }

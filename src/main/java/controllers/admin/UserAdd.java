@@ -7,6 +7,8 @@ import controllers.DAO.api.UserDAO;
 import controllers.DAO.beans.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +21,8 @@ import java.util.Locale;
 /**
  * Created by pxjok on 09.11.2015.
  */
-@WebServlet(name = "signup", urlPatterns = "/admin/add_user")
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin", "manager"}))
+@WebServlet(name = "add_user", urlPatterns = "/admin/add_user")
 public class UserAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -38,11 +41,11 @@ public class UserAdd extends HttpServlet {
         DAOFactory factory = new MySQLDaoFactory();
         UserDAO userDAO = factory.getUserDAO();
         userDAO.insert(user);
-        response.sendRedirect("/user_list");
+        response.sendRedirect("/admin/user_list");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/user_add.jsp").forward(request, response);
     }
 }

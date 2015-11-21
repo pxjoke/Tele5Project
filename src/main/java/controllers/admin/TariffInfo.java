@@ -45,6 +45,6 @@ public class TariffInfo extends HttpServlet {
         Service service = serviceDAO.getById(tariff.getServiceId()  );
         request.setAttribute("tariff", tariff);
         request.setAttribute("service", service);
-        request.getRequestDispatcher("/WEB-INF/jsp/tariff_info.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/tariff_info.jsp").forward(request, response);
     }
 }

@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.UserDAO;
@@ -24,10 +25,12 @@ public class UserDelete extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getParameter("id") == null){
+            response.sendError(400);
+            return;
+        }
         int id = Integer.valueOf(request.getParameter("id"));
-        DAOFactory factory = new MySQLDaoFactory();
-        UserDAO userDAO = factory.getUserDAO();
-        userDAO.deleteById(id);
-        response.sendRedirect("/user_list");
+        Connections.getFactory().getUserDAO().deleteById(id);
+        response.sendRedirect("/admin/user_list");
     }
 }

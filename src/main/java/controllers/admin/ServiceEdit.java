@@ -47,7 +47,7 @@ public class ServiceEdit extends HttpServlet {
         ServiceDAO  serviceDAO = factory.getServiceDAO();
         serviceDAO.updateById(Integer.valueOf(serviceId), service);
 
-        response.sendRedirect("/service_list");
+        response.sendRedirect("/admin/service_list");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -69,6 +69,6 @@ public class ServiceEdit extends HttpServlet {
 
 
         request.setAttribute("service", service);
-        request.getRequestDispatcher("/WEB-INF/jsp/service_edit.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/service_edit.jsp").forward(request, response);
     }
 }

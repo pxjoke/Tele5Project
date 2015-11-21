@@ -1,10 +1,15 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.MySQLDAO.MySQLUserDAO;
 import controllers.DAO.api.DAOFactory;
+import controllers.DAO.api.TariffDAO;
 import controllers.DAO.api.UserDAO;
+import controllers.DAO.api.UserServiceDAO;
+import controllers.DAO.beans.Tariff;
 import controllers.DAO.beans.User;
+import controllers.DAO.beans.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -27,10 +32,19 @@ public class UserInfo extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DAOFactory factory = new MySQLDaoFactory();
-        UserDAO userDAO = new MySQLUserDAO();
-        List<User> userList = userDAO.getAll();
-        request.setAttribute("users", userList);
-        request.getRequestDispatcher("/WEB-INF/jsp/user_info.jsp").forward(request, response);
+        String phone = request.getParameter("phone");
+        if (phone == null) {
+            response.sendError(400);
+            return;
+        }
+
+        User user = Connections.getFactory().getUserDAO().getByPhone(phone);
+        Tariff tariff = Connections.getFactory().getTariffDao().getById(user.getTariffId());
+        UserServiceDAO userServiceDAO = Connections.getFactory().getUserServiceDao();
+        List<UserService> userServices = userServiceDAO.getAllByUserId(user.getId());
+        request.setAttribute("user_services", userServices);
+        request.setAttribute("user", user);
+        request.setAttribute("tariff", tariff);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/user_info.jsp").forward(request, response);
     }
 }

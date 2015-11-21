@@ -57,7 +57,7 @@ public class TariffEdit extends HttpServlet {
 
         TariffDAO tariffDAO = factory.getTariffDao();
         tariffDAO.updateById(Integer.valueOf(tariffId), tariff);
-        response.sendRedirect("/tariff_list");
+        response.sendRedirect("/admin/tariff_list");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,6 +81,6 @@ public class TariffEdit extends HttpServlet {
 
         request.setAttribute("service", service);
         request.setAttribute("tariff", tariff);
-        request.getRequestDispatcher("/WEB-INF/jsp/tariff_edit.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/tariff_edit.jsp").forward(request, response);
     }
 }

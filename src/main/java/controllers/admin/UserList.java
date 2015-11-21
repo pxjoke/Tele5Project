@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.MySQLDAO.MySQLUserDAO;
 import controllers.DAO.api.DAOFactory;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,9 +29,8 @@ public class UserList extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DAOFactory factory = new MySQLDaoFactory();
-        UserDAO userDAO = new MySQLUserDAO();
-        List<User> userList = userDAO.getAll();
+
+        List<User> userList = Connections.getFactory().getUserDAO().getAll();
         request.setAttribute("users", userList);
         request.getRequestDispatcher("/WEB-INF/jsp/admin/user_list.jsp").forward(request, response);
     }

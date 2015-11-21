@@ -26,10 +26,10 @@ public class SecurityFilter implements Filter {
 
         //
         if (userPhone != null){
-            User sessionUser = (User) session.getAttribute("user");
-            if(sessionUser.getPhone() == null){
+            User sessionUser = (User) session.getAttribute("user_session");
+            if(sessionUser == null || sessionUser.getPhone() == null){
                 User user = Connections.getFactory().getUserDAO().getByPhone(userPhone.getName());
-                request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("user_session", user);
             }
         }
 

@@ -41,13 +41,16 @@
                     <div class="form-group">
                         <label for="inputRole" class="col-lg-2 control-label">Role</label>
 
-                        <div class="col-lg-9">
-                            <select id="inputRole" class="form-control" name="role">
-                                <option>user</option>
-                                <option>manager</option>
-                                <option>admin</option>
-                            </select>
-                        </div>
+                            <div class="col-lg-9">
+                                <select id="inputRole" class="form-control" name="role" >
+                                    <option>user</option>
+                                    <c:if test="${user_session.role.equals('admin')}">
+                                        <option>manager</option>
+                                        <option>admin</option>
+                                    </c:if>
+                                </select>
+                            </div>
+
                     </div>
 
                     <div class="form-group">

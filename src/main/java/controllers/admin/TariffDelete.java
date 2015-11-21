@@ -45,6 +45,6 @@ public class TariffDelete extends HttpServlet {
         }
         serviceDAO.deleteById(tariff.getServiceId());
 
-        response.sendRedirect("/tariff_list");
+        response.sendRedirect("/admin/tariff_list");
     }
 }

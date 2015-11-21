@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-lg-7">
         <div class="well bs-component">
-            <form class="form-horizontal" action="signup" method="post">
+            <form class="form-horizontal" action="add_user" method="post">
                 <fieldset>
                     <legend>Add new user</legend>
                     <div class="form-group">

@@ -53,11 +53,11 @@ public class TariffAdd extends HttpServlet {
         tariff.setServiceId(service.getId());
         TariffDAO tariffDAO = factory.getTariffDao();
         tariffDAO.insert(tariff);
-        response.sendRedirect("/tariff_list");
+        response.sendRedirect("/admin/tariff_list");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/tariff_add.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admiin/tariff_add.jsp").forward(request, response);
     }
 }

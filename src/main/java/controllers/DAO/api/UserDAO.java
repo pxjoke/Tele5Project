@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserDAO extends DataAccessObject<User>{
     User getByPhone(String phone);
 
+
 }

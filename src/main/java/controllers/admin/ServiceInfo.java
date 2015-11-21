@@ -39,6 +39,6 @@ public class ServiceInfo extends HttpServlet {
             return;
         }
         request.setAttribute("service", service);
-        request.getRequestDispatcher("/WEB-INF/jsp/service_info.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/service_info.jsp").forward(request, response);
     }
 }
