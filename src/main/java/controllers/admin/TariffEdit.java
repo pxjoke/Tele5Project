@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
@@ -35,7 +36,6 @@ public class TariffEdit extends HttpServlet {
         String tariffId = request.getParameter("tariffId");
 
 
-
         Tariff tariff = new Tariff();
         tariff.setName(name);
         tariff.setMinutes(Double.valueOf(minutes));
@@ -51,16 +51,13 @@ public class TariffEdit extends HttpServlet {
         service.setCost(Double.valueOf(cost));
 
 
-        DAOFactory factory = new MySQLDaoFactory();
-        ServiceDAO  serviceDAO = factory.getServiceDAO();
-        serviceDAO.updateById(Integer.valueOf(serviceId), service);
-
-        TariffDAO tariffDAO = factory.getTariffDao();
-        tariffDAO.updateById(Integer.valueOf(tariffId), tariff);
+        Connections.getFactory().getServiceDAO().updateById(Integer.valueOf(serviceId), service);
+        Connections.getFactory().getTariffDao().updateById(Integer.valueOf(tariffId), tariff);
         response.sendRedirect("/admin/tariff_list");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         if (request.getParameter("id") == null) {
             response.sendError(400);
             return;
@@ -68,16 +65,15 @@ public class TariffEdit extends HttpServlet {
 
         int id = Integer.valueOf(request.getParameter("id"));
 
-        DAOFactory factory = new MySQLDaoFactory();
-        TariffDAO tariffDAO = factory.getTariffDao();
-        Tariff tariff = tariffDAO.getById(id);
+
+        Tariff tariff = Connections.getFactory().getTariffDao().getById(id);
 
         if (tariff == null) {
             response.sendError(400);
             return;
         }
-        ServiceDAO serviceDAO = factory.getServiceDAO();
-        Service service = serviceDAO.getById(tariff.getServiceId());
+
+        Service service = Connections.getFactory().getServiceDAO().getById(tariff.getServiceId());
 
         request.setAttribute("service", service);
         request.setAttribute("tariff", tariff);

@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
@@ -34,15 +35,14 @@ public class TariffInfo extends HttpServlet {
         }
         int id = Integer.valueOf(request.getParameter("id"));
 
-        DAOFactory factory = new MySQLDaoFactory();
-        TariffDAO tariffDAO = factory.getTariffDao();
-        Tariff tariff = tariffDAO.getById(id);
+        Tariff tariff =  Connections.getFactory().getTariffDao().getById(id);
+
         if(tariff == null){
             response.sendError(400);
             return;
         }
-        ServiceDAO serviceDAO = factory.getServiceDAO();
-        Service service = serviceDAO.getById(tariff.getServiceId()  );
+
+        Service service = Connections.getFactory().getServiceDAO().getById(tariff.getServiceId());
         request.setAttribute("tariff", tariff);
         request.setAttribute("service", service);
         request.getRequestDispatcher("/WEB-INF/jsp/admin/tariff_info.jsp").forward(request, response);

@@ -80,10 +80,18 @@
                 <div class="panel-body">
 
                     <p>${service.description}</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices
+                        accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
                 </div>
                 <div class="panel-footer">
                     <a href="" class="btn btn-success">Buy for ${service.cost}$</a>
+                    <c:if test="${user_session.role.equals('admin')}">
+                        <div class="pull-right">
+                            <a href="/admin/tariff_edit?id=${tariff.id}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="/admin/tariff_delete?id=${tariff.id}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>

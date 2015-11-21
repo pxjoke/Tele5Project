@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.MySQLDAO.MySQLUserDAO;
 import controllers.DAO.api.DAOFactory;
@@ -25,12 +26,12 @@ import java.util.Locale;
 @WebServlet(name = "add_user", urlPatterns = "/admin/add_user")
 public class UserAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String status = request.getParameter("status");
         String role = request.getParameter("role");
+
         User user = new User();
         user.setName(name);
         user.setPhone(phone);
@@ -38,9 +39,8 @@ public class UserAdd extends HttpServlet {
         user.setStatus(Integer.valueOf(status));
         user.setRole(role);
         user.setTariffId(1);
-        DAOFactory factory = new MySQLDaoFactory();
-        UserDAO userDAO = factory.getUserDAO();
-        userDAO.insert(user);
+
+        Connections.getFactory().getUserDAO().insert(user);
         response.sendRedirect("/admin/user_list");
 
     }

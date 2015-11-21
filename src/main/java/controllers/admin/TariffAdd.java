@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
@@ -23,7 +24,7 @@ import java.io.IOException;
 @WebServlet(name = "tariff_add", urlPatterns = "/admin/tariff_add")
 public class TariffAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+
         String name = request.getParameter("name");
         String minutes = request.getParameter("minutes");
         String sms = request.getParameter("sms");
@@ -31,6 +32,7 @@ public class TariffAdd extends HttpServlet {
         String user_status = request.getParameter("user_status");
         String cost = request.getParameter("cost");
         String description = request.getParameter("description");
+
         Tariff tariff = new Tariff();
         tariff.setName(name);
         tariff.setMinutes(Double.valueOf(minutes));
@@ -44,20 +46,16 @@ public class TariffAdd extends HttpServlet {
         service.setName(name);
         service.setCost(Double.valueOf(cost));
 
-
-        DAOFactory factory = new MySQLDaoFactory();
-        ServiceDAO  serviceDAO = factory.getServiceDAO();
-        serviceDAO.insert(service);
-        service = serviceDAO.getByName(name);
+        Connections.getFactory().getServiceDAO().insert(service);
+        service = Connections.getFactory().getServiceDAO().getByName(name);
 
         tariff.setServiceId(service.getId());
-        TariffDAO tariffDAO = factory.getTariffDao();
-        tariffDAO.insert(tariff);
+        Connections.getFactory().getTariffDao().insert(tariff);
         response.sendRedirect("/admin/tariff_list");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/admiin/tariff_add.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/tariff_add.jsp").forward(request, response);
     }
 }

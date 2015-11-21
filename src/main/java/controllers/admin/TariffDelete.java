@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
@@ -35,16 +36,13 @@ public class TariffDelete extends HttpServlet {
         }
         int id = Integer.valueOf(request.getParameter("id"));
 
-        DAOFactory factory = new MySQLDaoFactory();
-        ServiceDAO serviceDAO = factory.getServiceDAO();
-        TariffDAO tariffDAO = factory.getTariffDao();
-        Tariff tariff = tariffDAO.getById(id);
+        Tariff tariff = Connections.getFactory().getTariffDao().getById(id);
+
         if (tariff == null) {
             response.sendError(400);
             return;
         }
-        serviceDAO.deleteById(tariff.getServiceId());
-
+        Connections.getFactory().getServiceDAO().deleteById(tariff.getServiceId());
         response.sendRedirect("/admin/tariff_list");
     }
 }
