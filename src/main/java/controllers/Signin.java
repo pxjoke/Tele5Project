@@ -12,14 +12,14 @@ import java.io.IOException;
 /**
  * Created by pxjok on 09.11.2015.
  */
-
-@WebServlet(name = "login", urlPatterns = "/login")
-public class Login extends HttpServlet {
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"user", "manager", "admin"}))
+@WebServlet(name = "signin", urlPatterns = "/signin")
+public class SignIn extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+        response.sendRedirect("/account");
     }
 }

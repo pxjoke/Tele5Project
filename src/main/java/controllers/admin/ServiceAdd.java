@@ -1,5 +1,6 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
@@ -23,7 +24,7 @@ import java.io.IOException;
 @WebServlet(name = "service_add", urlPatterns = "/admin/service_add")
 public class ServiceAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+
         String name = request.getParameter("name");
         String cost = request.getParameter("cost");
         String description = request.getParameter("description");
@@ -42,12 +43,10 @@ public class ServiceAdd extends HttpServlet {
         service.setInternet(Integer.valueOf(internet));
 
 
-        DAOFactory factory = new MySQLDaoFactory();
-        ServiceDAO  serviceDAO = factory.getServiceDAO();
-        serviceDAO.insert(service);
+        Connections.getFactory().getServiceDAO().insert(service);
 
 
-        response.sendRedirect("/service_list");
+        response.sendRedirect("/admin/service_list");
 
     }
 

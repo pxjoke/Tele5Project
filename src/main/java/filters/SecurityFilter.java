@@ -24,10 +24,11 @@ public class SecurityFilter implements Filter {
         Principal userPhone = request.getUserPrincipal();
         HttpSession session = request.getSession(false);
 
-        //
-        if (userPhone != null){
+
+        if (userPhone != null) {
             User sessionUser = (User) session.getAttribute("user_session");
-            if(sessionUser == null || sessionUser.getPhone() == null){
+            if (sessionUser == null || sessionUser.getPhone() == null
+                    || sessionUser.getPhone() != userPhone.getName()) {
                 User user = Connections.getFactory().getUserDAO().getByPhone(userPhone.getName());
                 request.getSession().setAttribute("user_session", user);
             }

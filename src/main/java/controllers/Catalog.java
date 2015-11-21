@@ -23,6 +23,9 @@ public class Catalog extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+
         DAOFactory factory = new MySQLDaoFactory();
         ServiceDAO serviceDAO = factory.getServiceDAO();
         List<Service> services = serviceDAO.getAll();

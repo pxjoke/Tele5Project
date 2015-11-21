@@ -83,6 +83,12 @@
                 </div>
                 <div class="panel-footer">
                     <a href="" class="btn btn-success">Buy for ${service.cost}$</a>
+                    <c:if test="${user_session.role.equals('admin')}">
+                        <div class="pull-right">
+                            <a href="/admin/service_edit?id=${service.id}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="/admin/service_delete?id=${service.id}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>

@@ -1,14 +1,11 @@
 <jsp:useBean id="services" scope="request" type="java.util.List<controllers.DAO.beans.Service>"/>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Services List <a class="btn btn-success" href="/service_add">+ <i class="fa fa-asterisk"></i> </a> </h1>
-        <ol class="breadcrumb">
-            <li><a href="index.html">Home</a>
-            </li>
-            <li class="active">About</li>
-        </ol>
+        <h1 class="page-header">Services List <a class="btn btn-success" href="/admin/service_add">+ <i class="fa fa-asterisk"></i> </a> </h1>
+        <hr>
     </div>
 </div>
+
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-12">

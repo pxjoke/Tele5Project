@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -31,36 +32,12 @@ public class Account extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String phone = request.getParameter("phone");
-        if (phone == null) {
-            if (request.getUserPrincipal().getName() != null) {
-                phone = request.getUserPrincipal().getName();
-                response.sendRedirect("/account?phone=" + phone);
-                return;
-            } else {
-                response.sendError(400);
-                return;
-            }
+        String phone = request.getUserPrincipal().getName();
 
-        }
-
-        DAOFactory factory = new MySQLDaoFactory();
-        UserDAO userDAO = factory.getUserDAO();
-
-
-        if (!phone.equals(request.getUserPrincipal().getName())) {
-            User user = userDAO.getByPhone(request.getUserPrincipal().getName());
-            if (user.getRole().equals("user")) {
-                response.sendError(400);
-                return;
-            }
-        }
-
-        User user = userDAO.getByPhone(phone);
-        TariffDAO tariffDAO = factory.getTariffDao();
-        Tariff tariff = tariffDAO.getById(user.getTariffId());
-        UserServiceDAO userServiceDAO = factory.getUserServiceDao();
-        List<UserService> userServices = userServiceDAO.getAllByUserId(user.getId());
+        User user = Connections.getFactory().getUserDAO().getByPhone(phone);
+        Tariff tariff = Connections.getFactory().getTariffDao().getById(user.getTariffId());
+        List<UserService> userServices = Connections.getFactory().getUserServiceDao()
+                .getAllByUserId(user.getId());
         request.setAttribute("user_services", userServices);
         request.setAttribute("user", user);
         request.setAttribute("tariff", tariff);
