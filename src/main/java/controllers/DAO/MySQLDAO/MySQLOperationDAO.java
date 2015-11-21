@@ -24,6 +24,8 @@ public class MySQLOperationDAO extends MySQLAbstractCRUD<Operation> implements O
     private final String columns = table + ".id, " + table + ".account, " +
             table + ".type, " + table + ".cost, " + table + ".amount, "
             + table + ".time, " + table + ".service";
+    private final String serviceTable = "services";
+    private final String serviceColumns = serviceTable + ".name";
 
 
     @Override
@@ -49,6 +51,37 @@ public class MySQLOperationDAO extends MySQLAbstractCRUD<Operation> implements O
         tmp.append("time=" + toQuote(bean.getTime()) + ", ");
         tmp.append("service=" + bean.getServiceId());
         return tmp.toString();
+    }
+
+    @Override
+    protected Operation parseResultSet(ResultSet resultSet) throws SQLException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Operation bean = new Operation();
+        bean.setId(resultSet.getInt("id"));
+        bean.setAccountId(resultSet.getInt("account"));
+        bean.setType(resultSet.getString("type"));
+        bean.setCost(resultSet.getDouble("cost"));
+        bean.setAmount(resultSet.getInt("amount"));
+        bean.setTime(formatter.format(resultSet.getDate("time")));
+        bean.setServiceId(resultSet.getInt("service"));
+        bean.setServiceName(resultSet.getString("name"));
+
+        return bean;
+    }
+
+    @Override
+    protected String getAdditionalTables() {
+        return ", " + serviceTable;
+    }
+
+    @Override
+    protected String getAdditionalColumns() {
+        return ", " + serviceColumns;
+    }
+
+    @Override
+    protected String getAdditionalCondition() {
+        return " AND " + table +".service=" + serviceTable + ".id";
     }
 
     @Override
@@ -81,19 +114,5 @@ public class MySQLOperationDAO extends MySQLAbstractCRUD<Operation> implements O
     @Override
     protected String getTable() {
         return table;
-    }
-
-    @Override
-    protected Operation parseResultSet(ResultSet resultSet) throws SQLException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Operation bean = new Operation();
-        bean.setId(resultSet.getInt("id"));
-        bean.setAccountId(resultSet.getInt("account"));
-        bean.setType(resultSet.getString("type"));
-        bean.setCost(resultSet.getDouble("cost"));
-        bean.setAmount(resultSet.getInt("amount"));
-        bean.setTime(formatter.format(resultSet.getDate("time")));
-        bean.setServiceId(resultSet.getInt("service"));
-        return bean;
     }
 }

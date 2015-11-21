@@ -22,7 +22,7 @@
         <c:forEach items="${tariffs}" var="tariff" varStatus="t">
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <img src="http://img11.nnm.me/c/c/9/1/a/8f3dfd17fe94b680678bc10547e.jpg" alt="">
+                    <img src="http://placehold.it/242x200" alt="">
 
                     <div class="caption">
                         <h3>${tariff.name}
@@ -31,7 +31,7 @@
                         <p>${tariff.description}</p>
 
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More
+                            <a href="/buy?id=${tariff.id}" class="btn btn-primary">Buy Now!</a> <a href="/admin/service_info?id=${tariff.id}" class="btn btn-default">More
                             Info</a>
                         </p>
                     </div>
@@ -47,7 +47,7 @@
         <c:forEach items="${passive}" var="pas" varStatus="p">
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://www.kulturologia.ru/files/u16342/eyes.jpg" alt="">
+                    <img src="http://placehold.it/242x200" alt="">
 
                     <div class="caption">
                         <h3>${pas.name}
@@ -56,7 +56,7 @@
                         <p>${pas.description}</p>
 
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More
+                            <a href="/buy?id=${pas.id}" class="btn btn-primary">Buy Now!</a> <a href="/admin/service_info?id=${pas.id}" class="btn btn-default">More
                             Info</a>
                         </p>
                     </div>
@@ -71,8 +71,7 @@
         <c:forEach items="${packages}" var="pack" varStatus="p">
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://free-act.ru.images.1c-bitrix-cdn.ru/upload/iblock/ea3/ea322eaa820781d404a32d66bdfd28c9.jpg?1419843639228442"
-                         alt="">
+                    <img src="http://placehold.it/242x200" alt="">
 
                     <div class="caption">
                         <h3>${pack.name}
@@ -81,7 +80,7 @@
                         <p>${pack.description}</p>
 
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More
+                            <a href="/buy?id=${pack.id}" class="btn btn-primary">Buy Now!</a> <a href="/admin/service_info?id=${pack.id}" class="btn btn-default">More
                             Info</a>
                         </p>
                     </div>

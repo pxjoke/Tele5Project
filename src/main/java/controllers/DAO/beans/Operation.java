@@ -11,6 +11,15 @@ public class Operation {
     private int amount;
     private String time;
     private int serviceId;
+    private String serviceName;
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
 
     public int getId() {
         return id;
@@ -78,6 +87,7 @@ public class Operation {
                 ", amount=" + amount +
                 ", time='" + time + '\'' +
                 ", serviceId=" + serviceId +
+                ", serviceName='" + serviceName + '\'' +
                 '}';
     }
 }

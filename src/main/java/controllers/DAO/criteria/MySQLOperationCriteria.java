@@ -15,6 +15,7 @@ public class MySQLOperationCriteria extends OperationCriteria {
         StringBuffer expression = new StringBuffer();
         String tmp;
         if((tmp = getId()) != null) expression.append(" AND " + table + "id=" + tmp);
+        if((tmp = getAccountId()) != null) expression.append(" AND " + table + "account=" + tmp);
         return expression.toString();
     }
 }

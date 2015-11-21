@@ -1,9 +1,9 @@
-<jsp:useBean id="accounts" type="java.util.List<controllers.DAO.beans.Account>" scope="request"/>
+<jsp:useBean id="operations" type="java.util.List<controllers.DAO.beans.Operation>" scope="request"/>
 <div class="row">
 
     <div class="col-lg-12">
         <h1 class="page-header">
-            Orders
+            Order info
         </h1>
         <hr>
     </div>
@@ -19,24 +19,21 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Open</th>
-                        <th>Close</th>
-                        <th>Status</th>
-
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Cost</th>
+                        <th>Date</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <c:forEach items="${accounts}" var="account" varStatus="status1">
-                        <tr class="<c:if test="${!account.closed}" >bg-danger</c:if>">
-                            <td><a href="/order_info?id=${account.id}"><c:out value="${account.id}"/></a></td>
-                            <td><c:out value="${account.openDate}"/></td>
-                            <td>
-                                <c:if test="${account.closed}">
-                                    <c:out value="${account.closeDate}"/>
-                                </c:if>
-                            </td>
-                            <td><c:out value="${account.closed}"/></td>
+                    <c:forEach items="${operations}" var="operation" varStatus="status1">
+                        <tr>
+                            <td><c:out value="${operation.id}"/></td>
+                            <td><c:out value="${operation.serviceName}"/></td>
+                            <td><c:out value="${operation.type}"/></td>
+                            <td><c:out value="${operation.cost}"/></td>
+                            <td><c:out value="${operation.time}"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>

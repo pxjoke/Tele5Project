@@ -44,6 +44,15 @@ public class MySQLAccountDAO extends MySQLAbstractCRUD<Account> implements Accou
     }
 
     @Override
+    public Account getCurrent(int userId) {
+        AccountCriteria criteria = new MySQLAccountCriteria();
+        criteria.setStatus("0");
+        criteria.setUserId(String.valueOf(userId));
+        List<Account> list = getListByCriteria(criteria);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
     public boolean updateById(int id, Account bean) {
         AccountCriteria criteria = new MySQLAccountCriteria();
         criteria.setId(String.valueOf(id));

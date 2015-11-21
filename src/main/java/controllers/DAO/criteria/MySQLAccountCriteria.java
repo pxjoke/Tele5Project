@@ -14,6 +14,8 @@ public class MySQLAccountCriteria extends AccountCriteria {
         StringBuffer expression = new StringBuffer();
         String tmp;
         if((tmp = getId()) != null) expression.append(" AND " + table + "id=" + tmp);
+        if((tmp = getStatus()) != null) expression.append(" AND " + table + "close_status=" + tmp);
+        if((tmp = getUserId()) != null) expression.append(" AND " + table + "user=" + tmp);
         return expression.toString();
     }
 }

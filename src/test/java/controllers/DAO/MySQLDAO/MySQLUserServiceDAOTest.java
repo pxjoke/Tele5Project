@@ -28,7 +28,7 @@ public class MySQLUserServiceDAOTest {
 
     @Test
     public void testGetById() throws Exception {
-        UserService bean = mySQLUserServiceDAO.getById(1);
+        UserService bean = mySQLUserServiceDAO.getById(2);
         UserService beanNull = mySQLUserServiceDAO.getById(0);
         assertNotNull(bean);
         System.out.println(bean);
@@ -49,17 +49,17 @@ public class MySQLUserServiceDAOTest {
     @Test
     public void testUpdate() throws Exception {
         System.out.println("Update expr: " + mySQLUserServiceDAO.getUpdateExpression(defaultUserService));
-        UserService u = mySQLUserServiceDAO.getById(1);
+        UserService u = mySQLUserServiceDAO.getById(2);
         System.out.println("------Before Update--------");
         System.out.println(u);
         System.out.println("------After Update---------");
-        boolean stat = mySQLUserServiceDAO.updateById(1, defaultUserService);
+        boolean stat = mySQLUserServiceDAO.updateById(2, defaultUserService);
         assertTrue(stat);
-        System.out.println(mySQLUserServiceDAO.getById(1));
+        System.out.println(mySQLUserServiceDAO.getById(2));
         stat = mySQLUserServiceDAO.updateById(1, null);
         assertFalse(stat);
         System.out.println("---------------------------");
-        mySQLUserServiceDAO.updateById(1, u);
+        mySQLUserServiceDAO.updateById(2, u);
     }
 
     @Test
