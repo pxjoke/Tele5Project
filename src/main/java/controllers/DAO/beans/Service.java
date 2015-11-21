@@ -12,6 +12,15 @@ public class Service {
     private int minutes;
     private int sms;
     private int internet;
+    private int userStatus;
+
+    public int getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
+    }
 
     public int getMinutes() {
         return minutes;

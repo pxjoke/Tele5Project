@@ -1,5 +1,7 @@
 package controllers.DAO.api;
 
+import controllers.DAO.api.criteria.Criteria;
+
 import java.util.List;
 
 /**
@@ -11,4 +13,5 @@ public interface DataAccessObject<T> {
     boolean insert(T bean);
     boolean deleteById(int id);
     boolean updateById(int id, T bean);
+    List<T> getListByCriteria(Criteria criteria);
 }

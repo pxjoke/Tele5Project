@@ -63,8 +63,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
-                            <input type="checkbox" name="user_status" id="inputStatus" value="1">
-                            <input type="checkbox" name="user_status"  value="0" hidden checked>
+                            <input type="checkbox" name="userStatus" id="inputStatus" value="1">
+                            <input type="checkbox" name="userStatus"  value="0" hidden checked>
                             For VIP only
                         </div>
                     </div>

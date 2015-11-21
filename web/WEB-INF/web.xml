@@ -21,8 +21,9 @@
             <url-pattern>/WEB-INF/jsp/*</url-pattern>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
-
         </jsp-property-group>
+
+
     </jsp-config>
 
     <error-page>

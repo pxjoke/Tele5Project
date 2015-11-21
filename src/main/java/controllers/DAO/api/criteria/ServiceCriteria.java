@@ -11,6 +11,24 @@ public abstract class ServiceCriteria implements Criteria {
     private String typePassive;
     private String typeTariff;
     private String typePackgage;
+    private String userStatus;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
 
     public String getTypePassive() {
         return typePassive;
