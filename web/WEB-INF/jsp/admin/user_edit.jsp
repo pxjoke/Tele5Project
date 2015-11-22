@@ -43,8 +43,11 @@
 
                             <div class="col-lg-9">
                                 <select id="inputRole" class="form-control" name="role" >
-                                    <option>user</option>
+                                    <c:if test="${user_session.role.equals('manager')}">
+                                        <option>${user.role}</option>
+                                    </c:if>
                                     <c:if test="${user_session.role.equals('admin')}">
+                                        <option>user</option>
                                         <option>manager</option>
                                         <option>admin</option>
                                     </c:if>
