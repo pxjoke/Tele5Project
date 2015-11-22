@@ -7,6 +7,8 @@ import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.TariffDAO;
 import controllers.DAO.api.UserDAO;
 import controllers.DAO.api.UserServiceDAO;
+import controllers.DAO.api.criteria.AccountCriteria;
+import controllers.DAO.beans.Account;
 import controllers.DAO.beans.Tariff;
 import controllers.DAO.beans.User;
 import controllers.DAO.beans.UserService;
@@ -42,9 +44,13 @@ public class UserInfo extends HttpServlet {
         Tariff tariff = Connections.getFactory().getTariffDao().getById(user.getTariffId());
         UserServiceDAO userServiceDAO = Connections.getFactory().getUserServiceDao();
         List<UserService> userServices = userServiceDAO.getAllByUserId(user.getId());
+        AccountCriteria accountCriteria = Connections.getFactory().getAccountCriteria();
+        accountCriteria.setUserId(String.valueOf(user.getId()));
+        List<Account> accounts = Connections.getFactory().getAccountDao().getListByCriteria(accountCriteria);
         request.setAttribute("user_services", userServices);
         request.setAttribute("user", user);
         request.setAttribute("tariff", tariff);
+        request.setAttribute("accounts", accounts);
         request.getRequestDispatcher("/WEB-INF/jsp/admin/user_info.jsp").forward(request, response);
     }
 }

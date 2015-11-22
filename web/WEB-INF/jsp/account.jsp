@@ -21,8 +21,31 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <div class="list-group-item list-group list-group-item-success">
-                                <span class="badge">active</span>
+                            <div class="list-group-item list-group
+                                <c:choose>
+                                    <c:when test="${user_session.status == 0}">
+                                         list-group-item-danger
+                                    </c:when>
+                                    <c:when test="${user_session.status == 1}">
+                                        list-group-item-success
+                                    </c:when>
+                                    <c:when test="${user_session.status == 2}">
+                                        list-group-item-info
+                                    </c:when>
+                                </c:choose>  ">
+
+                                <c:choose>
+                                    <c:when test="${user_session.status == 0}">
+                                        <span class="badge">blocked</span>
+                                    </c:when>
+                                    <c:when test="${user_session.status == 1}">
+                                        <span class="badge">active</span>
+                                    </c:when>
+                                    <c:when test="${user_session.status == 2}">
+                                        <span class="badge">vip</span>
+                                    </c:when>
+                                </c:choose>
+
                                 <i class="fa fa-fw fa-mobile-phone"></i>
                                 <jsp:getProperty name="user" property="phone"/>
                             </div>
@@ -37,8 +60,9 @@
                                 <a href="/order_info?id=${account.id}">Current account: ${account.openDate}</a>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <a href="#">Change <i class="fa fa-arrow-circle-right"></i></a>
+                        <div class="text-left">
+                            <a href="/close_account" class="btn btn-info btn-sm"><i class="fa fa-credit-card"></i> close
+                                for ${account.totalPrice}$</a>
                         </div>
                     </div>
                 </div>
@@ -91,13 +115,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${user_services}" var="user_service"  varStatus="status">
-                                <tr>
-                                    <td>${status.index + 1}</td>
-                                    <td>${user_service.serviceName}</td>
-                                    <td>${user_service.serviceCost}</td>
-                                    <td class="text-center"><a href="/user_service_delete?id=${user_service.id}" class="label label-danger"><i class="fa fa-remove"></i></a></td>
-                                </tr>
+                                <c:forEach items="${user_services}" var="user_service" varStatus="status">
+                                    <tr>
+                                        <td>${status.index + 1}</td>
+                                        <td>${user_service.serviceName}</td>
+                                        <td>${user_service.serviceCost}</td>
+                                        <td class="text-center"><a href="/user_service_delete?id=${user_service.id}"
+                                                                   class="label label-danger"><i
+                                                class="fa fa-remove"></i></a></td>
+                                    </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>

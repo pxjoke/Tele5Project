@@ -4,11 +4,7 @@
 
     <div class="col-lg-12">
         <h1 class="page-header">
-            Order info
-            <c:if test="${!account.closed}">
-                <a href="/close_account" class="btn btn-success"><i class="fa fa-credit-card"></i> close
-                    for ${account.totalPrice}$</a>
-            </c:if>
+            Order info <span class="btn btn-info"><i class="fa fa-credit-card"></i> ${account.totalPrice}$</span>
         </h1>
         <hr>
     </div>

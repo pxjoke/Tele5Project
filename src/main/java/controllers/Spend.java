@@ -30,6 +30,11 @@ public class Spend extends HttpServlet {
         int internet = (i.isEmpty()) ? 0 : Integer.valueOf(i);
 
         User user = (User) request.getSession().getAttribute("user_session");
+        if(user.getStatus() == 0){
+            response.sendError(400);
+            return;
+        }
+
         Tariff userTariff = Connections.getFactory().getTariffDao().getById(user.getTariffId());
         Account userAccount = Connections.getFactory().getAccountDao().getCurrent(user.getId());
         if(minutes > 0){
