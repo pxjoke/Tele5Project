@@ -26,12 +26,12 @@
 
                     <div class="caption">
                         <h3>${tariff.name}
-                            <small class="label label-success">${tariff.cost}$</small>
+                            <small class="text-success text-right">${tariff.cost}$</small>
                         </h3>
+                        <hr>
                         <p>${tariff.description}</p>
-
                         <p>
-                            <a href="/buy?id=${tariff.id}" class="btn btn-primary">Buy Now!</a> <a href="/admin/service_info?id=${tariff.id}" class="btn btn-default">More
+                            <a href="/buy?id=${tariff.id}" class="btn btn-primary btn-sm">Buy Now!</a> <a href="/admin/service_info?id=${tariff.id}" class="btn btn-default btn-sm">More
                             Info</a>
                         </p>
                     </div>
@@ -51,12 +51,13 @@
 
                     <div class="caption">
                         <h3>${pas.name}
-                            <small class="label label-success">${pas.cost}$</small>
+                            <small class="text-success">${pas.cost}$</small>
                         </h3>
+                        <hr>
                         <p>${pas.description}</p>
 
                         <p>
-                            <a href="/buy?id=${pas.id}" class="btn btn-primary">Buy Now!</a> <a href="/admin/service_info?id=${pas.id}" class="btn btn-default">More
+                            <a href="/buy?id=${pas.id}" class="btn btn-primary btn-sm">Buy Now!</a> <a href="/admin/service_info?id=${pas.id}" class="btn btn-default btn-sm">More
                             Info</a>
                         </p>
                     </div>
@@ -75,12 +76,13 @@
 
                     <div class="caption">
                         <h3>${pack.name}
-                            <small class="label label-success">${pack.cost}$</small>
+                            <small class="text-success">${pack.cost}$</small>
                         </h3>
+                        <hr>
                         <p>${pack.description}</p>
 
                         <p>
-                            <a href="/buy?id=${pack.id}" class="btn btn-primary">Buy Now!</a> <a href="/admin/service_info?id=${pack.id}" class="btn btn-default">More
+                            <a href="/buy?id=${pack.id}" class="btn btn-primary btn-sm">Buy Now!</a> <a href="/admin/service_info?id=${pack.id}" class="btn btn-default btn-sm">More
                             Info</a>
                         </p>
                     </div>
