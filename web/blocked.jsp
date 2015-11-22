@@ -3,7 +3,8 @@
         <div class="headline">
             <div class="container">
                 <h1>Denied</h1>
-                <h2>Wrong URL request</h2>
+
+                <h2>Your account is blocked</h2>
             </div>
         </div>
     </div>

@@ -28,6 +28,7 @@
     <!-- Custom styles for this template -->
     <link href="/css/navbar.css" rel="stylesheet">
     <link href="/css/signin.css" rel="stylesheet">
+    <link href="/css/one-page-wonder.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 

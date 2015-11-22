@@ -30,8 +30,9 @@ public class Spend extends HttpServlet {
         int internet = (i.isEmpty()) ? 0 : Integer.valueOf(i);
 
         User user = (User) request.getSession().getAttribute("user_session");
+
         if(user.getStatus() == 0){
-            response.sendError(400);
+            response.sendRedirect("blocked.jsp");
             return;
         }
 
