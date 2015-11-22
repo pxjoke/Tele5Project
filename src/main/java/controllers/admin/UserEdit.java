@@ -4,6 +4,7 @@ import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.UserDAO;
+import controllers.DAO.api.Utils;
 import controllers.DAO.beans.User;
 
 import javax.servlet.ServletException;
@@ -24,13 +25,22 @@ public class UserEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String tmp = request.getParameter("id");
+
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String status = request.getParameter("status");
         String role = request.getParameter("role");
+        int id;
+        if((id = controllers.helpers.Utils.idParamCheck(request, response)) < 0) return;
 
-        int id = Integer.valueOf(tmp);
+
+        if(name.isEmpty() || phone.isEmpty() || password.isEmpty() || status.isEmpty() ||
+                role.isEmpty()){
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
+
         User user = Connections.getFactory().getUserDAO().getById(id);
         user.setName(name);
         user.setPhone(phone);
@@ -44,7 +54,7 @@ public class UserEdit extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String phone = request.getParameter("phone");
         if (phone == null) {
-            response.sendError(400);
+            response.sendRedirect("/no_such_element.jsp");
             return;
         }
 

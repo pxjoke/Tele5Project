@@ -25,13 +25,11 @@ public class UserDelete extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("id") == null) {
-            response.sendError(400);
-            return;
-        }
-        int id = Integer.valueOf(request.getParameter("id"));
+        int id;
+        if((id = controllers.helpers.Utils.idParamCheck(request, response)) < 0) return;
+
         if (!Connections.getFactory().getUserDAO().deleteById(id)) {
-            response.sendError(400);
+            response.sendRedirect("/no_such_element.jsp");
             return;
         }
         response.sendRedirect("/admin/user_list");

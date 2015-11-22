@@ -35,20 +35,36 @@ public class TariffEdit extends HttpServlet {
         String serviceId = request.getParameter("serviceId");
         String tariffId = request.getParameter("tariffId");
 
+        if(name.isEmpty() || minutes.isEmpty() || sms.isEmpty() || internet.isEmpty() || user_status.isEmpty()||
+                cost.isEmpty() || serviceId.isEmpty() || tariffId.isEmpty()){
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
 
         Tariff tariff = new Tariff();
         tariff.setName(name);
-        tariff.setMinutes(Double.valueOf(minutes));
-        tariff.setSms(Double.valueOf(sms));
-        tariff.setInternet(Double.valueOf(internet));
-        tariff.setUserStatus(Integer.valueOf(user_status));
-        tariff.setServiceId(Integer.valueOf(serviceId));
+        try {
+            tariff.setMinutes(Double.valueOf(minutes));
+            tariff.setSms(Double.valueOf(sms));
+            tariff.setInternet(Double.valueOf(internet));
+            tariff.setUserStatus(Integer.valueOf(user_status));
+            tariff.setServiceId(Integer.valueOf(serviceId));
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
 
         Service service = new Service();
         service.setType("tariff");
         service.setDescription(description);
         service.setName(name);
-        service.setCost(Double.valueOf(cost));
+
+        try {
+            service.setCost(Double.valueOf(cost));
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
 
 
         Connections.getFactory().getServiceDAO().updateById(Integer.valueOf(serviceId), service);
@@ -58,18 +74,14 @@ public class TariffEdit extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (request.getParameter("id") == null) {
-            response.sendError(400);
-            return;
-        }
-
-        int id = Integer.valueOf(request.getParameter("id"));
+        int id;
+        if((id = controllers.helpers.Utils.idParamCheck(request, response)) < 0) return;
 
 
         Tariff tariff = Connections.getFactory().getTariffDao().getById(id);
 
         if (tariff == null) {
-            response.sendError(400);
+            response.sendRedirect("/no_such_element.jsp");
             return;
         }
 

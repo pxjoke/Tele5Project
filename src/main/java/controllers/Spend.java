@@ -25,14 +25,23 @@ public class Spend extends HttpServlet {
         String s = request.getParameter("sms");
         String i = request.getParameter("internet");
 
-        int minutes = (m.isEmpty()) ? 0 : Integer.valueOf(m);
-        int sms = (s.isEmpty()) ? 0 : Integer.valueOf(s);
-        int internet = (i.isEmpty()) ? 0 : Integer.valueOf(i);
+        int minutes = 0;
+        int sms = 0;
+        int internet = 0;
+
+        try {
+            minutes = (m.isEmpty()) ? 0 : Integer.valueOf(m);
+            sms = (s.isEmpty()) ? 0 : Integer.valueOf(s);
+            internet = (i.isEmpty()) ? 0 : Integer.valueOf(i);
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+            e.printStackTrace();
+        }
 
         User user = (User) request.getSession().getAttribute("user_session");
 
         if(user.getStatus() == 0){
-            response.sendRedirect("blocked.jsp");
+            response.sendRedirect("/blocked.jsp");
             return;
         }
 

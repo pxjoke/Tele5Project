@@ -34,17 +34,24 @@ public class Buy extends HttpServlet {
             return;
         }
 
-        int serviceId = Integer.valueOf(request.getParameter("id"));
+        int serviceId = 0;
+        try {
+            serviceId = Integer.valueOf(request.getParameter("id"));
+        } catch (NumberFormatException e) {
+            response.sendError(400);
+            e.printStackTrace();
+        }
+
         User user = (User) request.getSession().getAttribute("user_session");
         Service service = Connections.getFactory().getServiceDAO().getById(serviceId);
 
         if (service == null) {
-            response.sendError(400);
+            response.sendRedirect("/no_such_element.jsp");
             return;
         }
 
         if (user.getStatus() < service.getUserStatus()) {
-            response.sendError(400);
+            response.sendRedirect("/blocked.jsp");
             return;
         }
 
@@ -75,7 +82,7 @@ public class Buy extends HttpServlet {
             user.setInternet(net + service.getInternet());
             Connections.getFactory().getUserDAO().updateById(user.getId(), user);
             request.getSession().setAttribute("user_session", user);
-        }else if(service.getType().equals("passive")){
+        } else if (service.getType().equals("passive")) {
             UserService userService = new UserService();
             userService.setServiceId(serviceId);
             userService.setUserId(user.getId());
@@ -83,8 +90,6 @@ public class Buy extends HttpServlet {
         }
 
         response.sendRedirect("/account");
-
-//        Connections.getFactory().getAccountDao().getListByCriteria();
 
 
     }

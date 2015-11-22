@@ -1,10 +1,12 @@
 package controllers.admin;
 
+import controllers.Connections;
 import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.ServiceDAO;
 import controllers.DAO.api.TariffDAO;
 import controllers.DAO.beans.Tariff;
+import controllers.helpers.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -27,16 +29,9 @@ public class ServiceDelete extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (request.getParameter("id") == null) {
-            response.sendError(400);
-            return;
-        }
-        int id = Integer.valueOf(request.getParameter("id"));
-
-        DAOFactory factory = new MySQLDaoFactory();
-        ServiceDAO serviceDAO = factory.getServiceDAO();
-
-        serviceDAO.deleteById(id);
+        int id;
+        if ((id = Utils.idParamCheck(request, response)) < 0) return;
+        Connections.getFactory().getServiceDAO().deleteById(id);
 
         response.sendRedirect("/admin/service_list");
     }

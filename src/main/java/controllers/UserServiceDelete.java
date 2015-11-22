@@ -31,6 +31,7 @@ public class UserServiceDelete extends HttpServlet {
             response.sendError(400);
             return;
         }
+
         int id = Integer.valueOf(request.getParameter("id"));
 
 
@@ -42,10 +43,10 @@ public class UserServiceDelete extends HttpServlet {
         boolean status = userServiceDao.deleteByIdAndUserId(id, user.getId());
 
         if (!status) {
-            response.sendError(400);
+            response.sendRedirect("/no_such_element.jsp");
             return;
         }
 
-        response.sendRedirect("/account?id=" + user.getId());
+        response.sendRedirect("/account");
     }
 }

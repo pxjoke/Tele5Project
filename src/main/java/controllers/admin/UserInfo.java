@@ -35,12 +35,17 @@ public class UserInfo extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String phone = request.getParameter("phone");
+
         if (phone == null) {
             response.sendError(400);
             return;
         }
 
         User user = Connections.getFactory().getUserDAO().getByPhone(phone);
+        if (user == null) {
+            response.sendRedirect("no_such_element.jsp");
+            return;
+        }
         Tariff tariff = Connections.getFactory().getTariffDao().getById(user.getTariffId());
         UserServiceDAO userServiceDAO = Connections.getFactory().getUserServiceDao();
         List<UserService> userServices = userServiceDAO.getAllByUserId(user.getId());

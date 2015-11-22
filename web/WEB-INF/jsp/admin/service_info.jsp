@@ -19,7 +19,7 @@
 </div>
 <div class="row">
 
-    <dev class="col-lg-8">
+    <div class="col-lg-8">
         <div class="well">
             <div class="row">
                 <div class="col-lg-12">
@@ -98,7 +98,7 @@
                 </div>
             </c:if>
         </div>
-    </dev>
+    </div>
 
     <div class="col-lg-4 ">
         <div class="well">

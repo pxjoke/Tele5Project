@@ -35,6 +35,12 @@ public class UserAdd extends HttpServlet {
         String status = request.getParameter("status");
         String role = request.getParameter("role");
 
+        if(name.isEmpty() || phone.isEmpty() || password.isEmpty() || status.isEmpty() ||
+                role.isEmpty()){
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
+
         User user = new User();
         user.setName(name);
         user.setPhone(phone);

@@ -30,17 +30,13 @@ public class TariffDelete extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (request.getParameter("id") == null) {
-            response.sendError(400);
-            return;
-        }
-        int id = Integer.valueOf(request.getParameter("id"));
+        int id;
+        if((id = controllers.helpers.Utils.idParamCheck(request, response)) < 0) return;
 
         Tariff tariff = Connections.getFactory().getTariffDao().getById(id);
 
         if (tariff == null) {
-            response.sendError(400);
-            return;
+            response.sendRedirect("/no_such_element.jsp");
         }
         Connections.getFactory().getServiceDAO().deleteById(tariff.getServiceId());
         response.sendRedirect("/admin/tariff_list");

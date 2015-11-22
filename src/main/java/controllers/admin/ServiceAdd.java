@@ -36,11 +36,21 @@ public class ServiceAdd extends HttpServlet {
         Service service = new Service();
         service.setType(type);
         service.setDescription(description);
+        if(name.isEmpty()){
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
         service.setName(name);
-        service.setCost(Double.valueOf(cost));
-        service.setMinutes(Integer.valueOf(minutes));
-        service.setSms(Integer.valueOf(sms));
-        service.setInternet(Integer.valueOf(internet));
+
+        try {
+            service.setCost(Double.valueOf(cost));
+            service.setMinutes(Integer.valueOf(minutes));
+            service.setSms(Integer.valueOf(sms));
+            service.setInternet(Integer.valueOf(internet));
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
 
 
         Connections.getFactory().getServiceDAO().insert(service);

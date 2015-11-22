@@ -34,19 +34,39 @@ public class ServiceEdit extends HttpServlet {
         String serviceId = request.getParameter("serviceId");
 
 
-        Service service = Connections.getFactory().getServiceDAO().getById(Integer.valueOf(serviceId));
+        Service service = null;
+        try {
+            service = Connections.getFactory().getServiceDAO().getById(Integer.valueOf(serviceId));
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+        }
+
         service.setDescription(description);
 
         if(!service.getType().equals("tariff")){
+            if(name.isEmpty()){
+                response.sendRedirect("/validation_error.jsp");
+                return;
+            }
             service.setName(name);
         }
 
-        service.setCost(Double.valueOf(cost));
+        try {
+            service.setCost(Double.valueOf(cost));
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
 
         if(service.getType().equals("package")){
-            service.setMinutes(Integer.valueOf(minutes));
-            service.setInternet(Integer.valueOf(internet));
-            service.setSms(Integer.valueOf(sms));
+            try {
+                service.setMinutes(Integer.valueOf(minutes));
+                service.setInternet(Integer.valueOf(internet));
+                service.setSms(Integer.valueOf(sms));
+            } catch (NumberFormatException e) {
+                response.sendRedirect("/validation_error.jsp");
+                return;
+            }
         }
 
 
@@ -70,7 +90,7 @@ public class ServiceEdit extends HttpServlet {
         Service service = serviceDAO.getById(id);
 
         if (service == null) {
-            response.sendError(400);
+            response.sendRedirect("/no_such_element.jsp");
             return;
         }
 

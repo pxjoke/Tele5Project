@@ -33,18 +33,35 @@ public class TariffAdd extends HttpServlet {
         String cost = request.getParameter("cost");
         String description = request.getParameter("description");
 
+        if(name.isEmpty() || minutes.isEmpty() || sms.isEmpty() || internet.isEmpty() || user_status.isEmpty()||
+                cost.isEmpty()){
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
+
         Tariff tariff = new Tariff();
         tariff.setName(name);
-        tariff.setMinutes(Double.valueOf(minutes));
-        tariff.setSms(Double.valueOf(sms));
-        tariff.setInternet(Double.valueOf(internet));
-        tariff.setUserStatus(Integer.valueOf(user_status));
+        try {
+            tariff.setMinutes(Double.valueOf(minutes));
+            tariff.setSms(Double.valueOf(sms));
+            tariff.setInternet(Double.valueOf(internet));
+            tariff.setUserStatus(Integer.valueOf(user_status));
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
 
         Service service = new Service();
         service.setType("tariff");
         service.setDescription(description);
         service.setName(name);
-        service.setCost(Double.valueOf(cost));
+
+        try {
+            service.setCost(Double.valueOf(cost));
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/validation_error.jsp");
+            return;
+        }
 
         Connections.getFactory().getServiceDAO().insert(service);
         service = Connections.getFactory().getServiceDAO().getByName(name);

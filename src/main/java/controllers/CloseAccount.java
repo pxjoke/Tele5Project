@@ -44,15 +44,7 @@ public class CloseAccount extends HttpServlet {
         account.setUserId(user.getId());
         Connections.getFactory().getAccountDao().insert(account);
 
-
-
-
-
-
         response.sendRedirect("/orders");
-
-//        Connections.getFactory().getAccountDao().getListByCriteria();
-
 
     }
 

@@ -30,7 +30,12 @@ public class OrderInfo extends HttpServlet {
             return;
         }
 
-        int accountId = Integer.valueOf(request.getParameter("id"));
+        try {
+            int accountId = Integer.valueOf(request.getParameter("id"));
+        } catch (NumberFormatException e) {
+            response.sendError(400);
+            e.printStackTrace();
+        }
         OperationCriteria criteria = Connections.getFactory().getOperationCriteria();
         criteria.setAccountId(request.getParameter("id"));
         List<Operation> operations = Connections.getFactory().getOperationDao().getListByCriteria(criteria);
