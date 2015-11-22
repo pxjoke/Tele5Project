@@ -16,7 +16,7 @@ public abstract class MySQLAbstractCRUD<T> {
     public List<T> getListByCriteria(Criteria criteria) {
         List<T> list = new ArrayList<>();
         String criteriaExpression = (criteria == null) ? "" : criteria.getExpression();
-        String sql = getSelectExpression() + criteriaExpression + ";";
+        String sql = getSelectExpression() + criteriaExpression + getGroupBy() +  " ORDER BY " + getTable() + ".id;";
         try (Connection connection = MySQLDaoFactory.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
@@ -100,11 +100,16 @@ public abstract class MySQLAbstractCRUD<T> {
                 " FROM " + getTable() + getAdditionalTables() + " WHERE 1=1 " + getAdditionalCondition();
     }
 
+
     protected abstract String getColumns();
 
     protected abstract String getTable();
 
     protected String getAdditionalTables(){
+        return "";
+    }
+
+    protected String getGroupBy(){
         return "";
     }
 

@@ -22,13 +22,14 @@
                         <th>Open</th>
                         <th>Close</th>
                         <th>Status</th>
+                        <th>Total price:</th>
 
                     </tr>
                     </thead>
                     <tbody>
 
                     <c:forEach items="${accounts}" var="account" varStatus="status1">
-                        <tr class="<c:if test="${!account.closed}" >bg-danger</c:if>">
+                        <tr>
                             <td><a href="/order_info?id=${account.id}"><c:out value="${account.id}"/></a></td>
                             <td><c:out value="${account.openDate}"/></td>
                             <td>
@@ -37,6 +38,7 @@
                                 </c:if>
                             </td>
                             <td><c:out value="${account.closed}"/></td>
+                            <td><c:out value="${account.totalPrice}$"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>

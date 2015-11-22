@@ -1,9 +1,14 @@
 <jsp:useBean id="operations" type="java.util.List<controllers.DAO.beans.Operation>" scope="request"/>
+<jsp:useBean id="account" type="controllers.DAO.beans.Account" class="controllers.DAO.beans.Account" scope="request"/>
 <div class="row">
 
     <div class="col-lg-12">
         <h1 class="page-header">
             Order info
+            <c:if test="${!account.closed}">
+                <a href="/close_account" class="btn btn-success"><i class="fa fa-credit-card"></i> close
+                    for ${account.totalPrice}$</a>
+            </c:if>
         </h1>
         <hr>
     </div>

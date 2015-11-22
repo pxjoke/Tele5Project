@@ -28,7 +28,7 @@ public class MySQLAccountDAOTest {
 
     @Test
     public void testGetById() throws Exception {
-        Account account = mySQLAccountDAO.getById(1);
+        Account account = mySQLAccountDAO.getById(34);
         Account accountNull = mySQLAccountDAO.getById(0);
         assertNotNull(account);
         System.out.println(account);

@@ -1,11 +1,11 @@
-<jsp:useBean id="service" scope="request" class="controllers.DAO.beans.Service" />
+<jsp:useBean id="service" scope="request" class="controllers.DAO.beans.Service"/>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Update Tariff</h1>
+        <h1 class="page-header">Service edit</h1>
         <%--<ol class="breadcrumb">--%>
-            <%--<li><a href="index.html">Home</a>--%>
-            <%--</li>--%>
-            <%--<li class="active">About</li>--%>
+        <%--<li><a href="index.html">Home</a>--%>
+        <%--</li>--%>
+        <%--<li class="active">About</li>--%>
         <%--</ol>--%>
     </div>
 </div>
@@ -14,12 +14,14 @@
         <div class="well bs-component">
             <form class="form-horizontal" action="service_edit" method="post">
                 <fieldset>
-                    <legend>Add new tariff</legend>
+
                     <div class="form-group">
                         <label for="inputName" class="col-lg-2 control-label">Name</label>
 
                         <div class="col-lg-9">
-                            <input type="text" id="inputName" class="form-control" value="${service.name}" name="name">
+
+                            <input type="text" id="inputName" class="form-control" value="${service.name}" name="name"
+                                    <c:if test="${service.type.equals('tariff')}">disabled</c:if>>
                         </div>
                     </div>
                     <c:if test="${service.type.equals('package')}">
@@ -27,7 +29,8 @@
                             <label for="inputMinute" class="col-lg-2 control-label">Minute cost: </label>
 
                             <div class="col-lg-9">
-                                <input type="text" id="inputMinute" class="form-control" value="${service.minutes}" name="minutes">
+                                <input type="text" id="inputMinute" class="form-control" value="${service.minutes}"
+                                       name="minutes">
                             </div>
                         </div>
                         <div class="form-group">
@@ -41,11 +44,11 @@
                             <label for="inputInternet" class="col-lg-2 control-label">Internet cost</label>
 
                             <div class="col-lg-9">
-                                <input type="text" id="inputInternet" class="form-control" value="${service.internet}" name="internet">
+                                <input type="text" id="inputInternet" class="form-control" value="${service.internet}"
+                                       name="internet">
                             </div>
                         </div>
                     </c:if>
-
 
 
                     <div class="form-group">
@@ -60,19 +63,21 @@
                         <label for="inputDescription" class="col-lg-2 control-label">Description:</label>
 
                         <div class="col-lg-9">
-                            <textarea id="inputDescription" class="form-control" rows="4"  name="description"><c:out value="${service.description}"/></textarea>
+                            <textarea id="inputDescription" class="form-control" rows="4" name="description"><c:out
+                                    value="${service.description}"/></textarea>
                         </div>
                     </div>
 
 
-                <%--<div class="form-group">--%>
-                        <%--<div class="col-lg-8 col-lg-offset-2">--%>
-                            <%--<input type="checkbox" name="userStatus" id="inputStatus" value="1">--%>
-                            <%--<input type="checkbox" name="userStatus"  value="0" hidden checked>--%>
-                            <%--For VIP only--%>
-                        <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                    <%--<div class="col-lg-8 col-lg-offset-2">--%>
+                    <%--<input type="checkbox" name="userStatus" id="inputStatus" value="1">--%>
+                    <%--<input type="checkbox" name="userStatus"  value="0" hidden checked>--%>
+                    <%--For VIP only--%>
+                    <%--</div>--%>
                     <%--</div>--%>
                     <input type="text" name="serviceId" value="${service.id}" hidden>
+
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
                             <button type="submit" class="btn btn-primary">Submit</button>

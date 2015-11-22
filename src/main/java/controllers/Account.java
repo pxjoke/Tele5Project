@@ -38,6 +38,8 @@ public class Account extends HttpServlet {
         Tariff tariff = Connections.getFactory().getTariffDao().getById(user.getTariffId());
         List<UserService> userServices = Connections.getFactory().getUserServiceDao()
                 .getAllByUserId(user.getId());
+        controllers.DAO.beans.Account currentAccount = Connections.getFactory().getAccountDao().getCurrent(user.getId());
+        request.setAttribute("account", currentAccount);
         request.setAttribute("user_services", userServices);
         request.setAttribute("user", user);
         request.setAttribute("tariff", tariff);

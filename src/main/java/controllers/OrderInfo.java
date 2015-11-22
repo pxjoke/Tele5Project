@@ -2,8 +2,7 @@ package controllers;
 
 import controllers.DAO.api.criteria.AccountCriteria;
 import controllers.DAO.api.criteria.OperationCriteria;
-import controllers.DAO.beans.Operation;
-import controllers.DAO.beans.User;
+import controllers.DAO.beans.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -35,7 +34,9 @@ public class OrderInfo extends HttpServlet {
         OperationCriteria criteria = Connections.getFactory().getOperationCriteria();
         criteria.setAccountId(request.getParameter("id"));
         List<Operation> operations = Connections.getFactory().getOperationDao().getListByCriteria(criteria);
+        controllers.DAO.beans.Account account = Connections.getFactory().getAccountDao().getById(Integer.valueOf(request.getParameter("id")));
         request.setAttribute("operations", operations);
+        request.setAttribute("account", account);
         request.getRequestDispatcher("/WEB-INF/jsp/order_info.jsp").forward(request, response);
     }
 }

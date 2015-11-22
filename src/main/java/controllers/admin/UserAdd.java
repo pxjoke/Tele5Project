@@ -5,6 +5,7 @@ import controllers.DAO.MySQLDAO.MySQLDaoFactory;
 import controllers.DAO.MySQLDAO.MySQLUserDAO;
 import controllers.DAO.api.DAOFactory;
 import controllers.DAO.api.UserDAO;
+import controllers.DAO.beans.Account;
 import controllers.DAO.beans.User;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.jstl.fmt.LocalizationContext;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,8 +42,24 @@ public class UserAdd extends HttpServlet {
         user.setStatus(Integer.valueOf(status));
         user.setRole(role);
         user.setTariffId(1);
-
         Connections.getFactory().getUserDAO().insert(user);
+        user = Connections.getFactory().getUserDAO().getByPhone(phone);
+
+        controllers.DAO.beans.Account currentAccount = Connections.getFactory().getAccountDao().getCurrent(user.getId());
+        if(currentAccount == null){
+            controllers.DAO.beans.Account account = new Account();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            account.setOpenDate(format.format(new Date()));
+            account.setCloseDate(format.format(new Date()));
+            account.setClosed(false);
+            account.setUserId(user.getId());
+            Connections.getFactory().getAccountDao().insert(account);
+            currentAccount = Connections.getFactory().getAccountDao().getCurrent(user.getId());
+        }
+
+
+
+
         response.sendRedirect("/admin/user_list");
 
     }

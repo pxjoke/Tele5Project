@@ -1,6 +1,7 @@
 <jsp:useBean id="user" class="controllers.DAO.beans.User" scope="request" type="controllers.DAO.beans.User"/>
 <jsp:useBean id="tariff" class="controllers.DAO.beans.Tariff" scope="request" type="controllers.DAO.beans.Tariff"/>
 <jsp:useBean id="user_services" scope="request" type="java.util.List<controllers.DAO.beans.UserService>"/>
+<jsp:useBean id="account" scope="request" class="controllers.DAO.beans.Account" type="controllers.DAO.beans.Account"/>
 <div class="row">
 
     <div class="col-lg-12">
@@ -25,10 +26,15 @@
                                 <i class="fa fa-fw fa-mobile-phone"></i>
                                 <jsp:getProperty name="user" property="phone"/>
                             </div>
-                            <div href="#" class="list-group-item">
+                            <div class="list-group-item">
                                 <span class="badge"> <jsp:getProperty name="user" property="role"/></span>
                                 <i class="fa fa-fw fa-user"></i>
                                 <jsp:getProperty name="user" property="name"/>
+                            </div>
+                            <div class="list-group-item">
+                                <span class="badge"> ${account.totalPrice}$</span>
+                                <i class="fa fa-fw fa-credit-card"></i>
+                                <a href="/order_info?id=${account.id}">Current account: ${account.openDate}</a>
                             </div>
                         </div>
                         <div class="text-right">
@@ -136,35 +142,27 @@
                 <h3 class="panel-title"><i class="fa fa-tasks fa-fw"></i> Actions</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="spend" method="post">
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-3 control-label">Buy minutes</label>
+                        <label class="col-sm-3 control-label">Buy minutes</label>
 
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="number" class="form-control" name="minutes">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-3 control-label">Buy SMS</label>
+                        <label class="col-sm-3 control-label">Buy SMS</label>
 
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-3 control-label">Internet</label>
-
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="number" class="form-control" name="sms">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                        <label class="col-sm-3 control-label">Internet</label>
 
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="number" class="form-control" name="internet">
                         </div>
                     </div>
 

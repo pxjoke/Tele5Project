@@ -3,6 +3,7 @@ package controllers;
 import controllers.DAO.api.criteria.AccountCriteria;
 import controllers.DAO.api.criteria.TariffCriteria;
 import controllers.DAO.beans.*;
+import controllers.DAO.beans.Account;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -42,12 +43,13 @@ public class Buy extends HttpServlet {
             return;
         }
 
-        if (user.getStatus() != service.getUserStatus()) {
+        if (user.getStatus() < service.getUserStatus()) {
             response.sendError(400);
             return;
         }
 
         controllers.DAO.beans.Account currentAccount = Connections.getFactory().getAccountDao().getCurrent(user.getId());
+
 
         Operation operation = new Operation();
         operation.setServiceId(serviceId);

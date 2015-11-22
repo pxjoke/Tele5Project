@@ -36,8 +36,13 @@ public class ServiceEdit extends HttpServlet {
 
         Service service = Connections.getFactory().getServiceDAO().getById(Integer.valueOf(serviceId));
         service.setDescription(description);
-        service.setName(name);
+
+        if(!service.getType().equals("tariff")){
+            service.setName(name);
+        }
+
         service.setCost(Double.valueOf(cost));
+
         if(service.getType().equals("package")){
             service.setMinutes(Integer.valueOf(minutes));
             service.setInternet(Integer.valueOf(internet));

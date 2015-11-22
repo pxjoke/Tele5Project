@@ -9,6 +9,15 @@ public class Account {
     private String openDate;
     private String closeDate;
     private boolean closed;
+    private double totalPrice;
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     public int getId() {
         return id;
@@ -58,6 +67,7 @@ public class Account {
                 ", openDate='" + openDate + '\'' +
                 ", closeDate='" + closeDate + '\'' +
                 ", closed=" + closed +
+                ", totalPrice=" + totalPrice +
                 '}';
     }
 }

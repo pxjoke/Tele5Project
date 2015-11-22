@@ -18,8 +18,27 @@ import java.util.List;
  */
 public class MySQLAccountDAO extends MySQLAbstractCRUD<Account> implements AccountDAO {
     private final String table = "accounts";
+    private final String operationsTable = "operations";
+
     private final String columns = table + ".id, " + table + ".user, " +
             table + ".open, " + table + ".close, " + table + ".close_status";
+    private final String operationsColumns = " SUM(" + operationsTable + ".cost) ";
+
+    @Override
+    protected String getAdditionalColumns() {
+        return ", " + operationsColumns;
+    }
+
+    @Override
+    protected String getGroupBy() {
+        return " GROUP BY " + table + ".id ";
+    }
+
+    @Override
+    protected String getAdditionalTables() {
+        return " LEFT JOIN " + operationsTable + " ON "+operationsTable + ".account = " + table + ".id " ;
+    }
+
 
 
     @Override
@@ -41,6 +60,19 @@ public class MySQLAccountDAO extends MySQLAbstractCRUD<Account> implements Accou
         tmp.append("close=" + toQuote(bean.getCloseDate()) + ", ");
         tmp.append("close_status=" + bean.isClosed());
         return tmp.toString();
+    }
+
+    @Override
+    protected Account parseResultSet(ResultSet resultSet) throws SQLException {
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+        Account bean = new Account();
+        bean.setId(resultSet.getInt("id"));
+        bean.setUserId(resultSet.getInt("user"));
+        bean.setOpenDate(formater.format(resultSet.getDate("open")));
+        bean.setCloseDate(formater.format(resultSet.getDate("close")));
+        bean.setClosed(resultSet.getBoolean("close_status"));
+        bean.setTotalPrice(resultSet.getDouble("SUM(" + operationsTable + ".cost)"));
+        return bean;
     }
 
     @Override
@@ -82,17 +114,5 @@ public class MySQLAccountDAO extends MySQLAbstractCRUD<Account> implements Accou
     @Override
     protected String getTable() {
         return table;
-    }
-
-    @Override
-    protected Account parseResultSet(ResultSet resultSet) throws SQLException {
-        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-        Account bean = new Account();
-        bean.setId(resultSet.getInt("id"));
-        bean.setUserId(resultSet.getInt("user"));
-        bean.setOpenDate(formater.format(resultSet.getDate("open")));
-        bean.setCloseDate(formater.format(resultSet.getDate("close")));
-        bean.setClosed(resultSet.getBoolean("close_status"));
-        return bean;
     }
 }
