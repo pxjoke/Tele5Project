@@ -2,7 +2,7 @@
 <jsp:useBean id="users" scope="request" type="java.util.List<controllers.DAO.beans.User>"/>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">User List <a class="btn btn-success" href="/admin/add_user">+ <i class="fa fa-user"></i> </a> </h1>
+        <h1 class="page-header"><fmt:message key='user_list'/> <a class="btn btn-success" href="/admin/add_user">+ <i class="fa fa-user"></i> </a> </h1>
         <ol class="breadcrumb">
             <li><a href="index.html">Home</a>
             </li>
@@ -21,16 +21,16 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Password</th>
-                        <th>Minutes</th>
-                        <th>Status</th>
-                        <th>Role</th>
-                        <th>Internet</th>
-                        <th>SMS</th>
-                        <th>Tariff ID</th>
-                        <th>Edit</th>
+                        <th><fmt:message key='name'/></th>
+                        <th><fmt:message key='phone'/></th>
+                        <th><fmt:message key='signin.password'/></th>
+                        <th><fmt:message key='minutes'/></th>
+                        <th><fmt:message key='status'/></th>
+                        <th><fmt:message key='role'/></th>
+                        <th><fmt:message key='internet'/></th>
+                        <th><fmt:message key='sms'/></th>
+                        <th><fmt:message key='tariff'/> ID</th>
+                        <th><fmt:message key='edit'/></th>
                     </tr>
                     </thead>
                     <tbody>
