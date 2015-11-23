@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">New Service Page</h1>
+        <h1 class="page-header"><fmt:message key='servise.new_service_page'/></h1>
         <%--<ol class="breadcrumb">--%>
             <%--<li><a href="index.html">Home</a>--%>
             <%--</li>--%>
@@ -15,7 +15,7 @@
                 <fieldset>
                     <legend>Add new service</legend>
                     <div class="form-group">
-                        <label for="inputName" class="col-lg-2 control-label">Name</label>
+                        <label for="inputName" class="col-lg-2 control-label"><fmt:message key='name'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputName" class="form-control" name="name">
@@ -26,7 +26,7 @@
 
 
                     <div class="form-group">
-                        <label for="inputMinutes" class="col-lg-2 control-label">Minutes:</label>
+                        <label for="inputMinutes" class="col-lg-2 control-label"><fmt:message key='minutes'/>:</label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputMinutes" class="form-control" name="minutes">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputSMS" class="col-lg-2 control-label">SMS:</label>
+                        <label for="inputSMS" class="col-lg-2 control-label"><fmt:message key='sms'/>:</label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputSMS" class="form-control" name="sms">
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputInternet" class="col-lg-2 control-label">Internet:</label>
+                        <label for="inputInternet" class="col-lg-2 control-label"><fmt:message key='internet'/>:</label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputInternet" class="form-control" name="internet">
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputPrice" class="col-lg-2 control-label">Price:</label>
+                        <label for="inputPrice" class="col-lg-2 control-label"><fmt:message key='price'/>:</label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputPrice" class="form-control" name="cost">
@@ -58,14 +58,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputDescription" class="col-lg-2 control-label">Description:</label>
+                        <label for="inputDescription" class="col-lg-2 control-label"><fmt:message key='description'/>:</label>
 
                         <div class="col-lg-9">
                             <textarea id="inputDescription" class="form-control" rows="4" name="description"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputType" class="col-lg-2 control-label">Type: </label>
+                        <label for="inputType" class="col-lg-2 control-label"><fmt:message key='type'/>: </label>
 
                         <div class="col-lg-9">
                             <select id="inputType" class="form-control" name="type">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary"><fmt:message key='submit'/></button>
                         </div>
                     </div>
                 </fieldset>

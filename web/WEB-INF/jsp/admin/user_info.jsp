@@ -6,7 +6,7 @@
 
     <div class="col-lg-12">
         <h1 class="page-header">
-            Dashboard
+            <fmt:message key='account.dashboard'/>
         </h1>
         <hr>
     </div>
@@ -16,7 +16,7 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-male fa-fw"></i> User Info</h3>
+                <h3 class="panel-title"><i class="fa fa-male fa-fw"></i> <fmt:message key='account.user_info'/></h3>
             </div>
             <div class="panel-body">
                 <div class="list-group">
@@ -36,13 +36,13 @@
 
                         <c:choose>
                             <c:when test="${user.status == 0}">
-                                <span class="badge">blocked</span>
+                                <span class="badge"><fmt:message key='account.blocked'/></span>
                             </c:when>
                             <c:when test="${user.status == 1}">
-                                <span class="badge">active</span>
+                                <span class="badge"><fmt:message key='account.active'/></span>
                             </c:when>
                             <c:when test="${user.status == 2}">
-                                <span class="badge">vip</span>
+                                <span class="badge"><fmt:message key='account.vip'/></span>
                             </c:when>
                         </c:choose>
 
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <a href="/admin/user_edit?phone=${user.phone}">Change <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="/admin/user_edit?phone=${user.phone}"><fmt:message key='change'/> <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -68,23 +68,23 @@
     <div class="col-lg-4">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> Free packs: </h3>
+                <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> <fmt:message key='packages'/>: </h3>
             </div>
             <div class="panel-body">
                 <div class="list-group">
                     <div class="list-group-item list-group">
                         <span class="badge"> <jsp:getProperty name="user" property="minutes"/></span>
-                        <i class="fa fa-fw fa-phone"></i> Free minutes:
+                        <i class="fa fa-fw fa-phone"></i> <fmt:message key='account.free_minutes'/>:
                     </div>
 
                     <div class="list-group-item list-group">
                         <span class="badge"> <jsp:getProperty name="user" property="sms"/></span>
-                        <i class="fa fa-fw fa-envelope"></i> Free sms:
+                        <i class="fa fa-fw fa-envelope"></i> <fmt:message key='account.free_sms'/>:
                     </div>
 
                     <div class="list-group-item list-group">
                         <span class="badge"> <jsp:getProperty name="user" property="internet"/></span>
-                        <i class="fa fa-fw fa-globe"></i> Free internet:
+                        <i class="fa fa-fw fa-globe"></i> <fmt:message key='account.free_internet'/>:
                     </div>
                 </div>
 
@@ -96,23 +96,23 @@
     <div class="col-lg-4">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-mobile-phone fa-fw"></i> Tariff "${tariff.name}" </h3>
+                <h3 class="panel-title"><i class="fa fa-mobile-phone fa-fw"></i> <fmt:message key='tariff'/> "${tariff.name}" </h3>
             </div>
             <div class="panel-body">
                 <div class="list-group">
                     <div class="list-group-item list-group">
                         <span class="badge"> <jsp:getProperty name="tariff" property="minutes"/></span>
-                        <i class="fa fa-fw fa-phone"></i> Minute cost:
+                        <i class="fa fa-fw fa-phone"></i> <fmt:message key='account.minute_cost'/>:
                     </div>
 
                     <div class="list-group-item list-group">
                         <span class="badge"> <jsp:getProperty name="tariff" property="sms"/></span>
-                        <i class="fa fa-fw fa-envelope"></i> SMS cost:
+                        <i class="fa fa-fw fa-envelope"></i> <fmt:message key='account.sms_cost'/>:
                     </div>
 
                     <div class="list-group-item list-group">
                         <span class="badge"> <jsp:getProperty name="tariff" property="internet"/></span>
-                        <i class="fa fa-fw fa-globe"></i> Mb cost:
+                        <i class="fa fa-fw fa-globe"></i> <fmt:message key='account.internet_cost'/>:
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
     <div class="col-lg-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> Services: </h3>
+                <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> <fmt:message key='services'/>: </h3>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
@@ -134,8 +134,8 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Cost</th>
+                            <th><fmt:message key='name'/></th>
+                            <th><fmt:message key='cost'/></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -156,18 +156,18 @@
     <div class="col-lg-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> Orders: </h3>
+                <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> <fmt:message key='orders'/>: </h3>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Open</th>
-                            <th>Close</th>
-                            <th>Status</th>
-                            <th>Total price:</th>
+                            <th><fmt:message key='id'/>:</th>
+                            <th><fmt:message key='open'/>:</th>
+                            <th><fmt:message key='close'/>:</th>
+                            <th><fmt:message key='status'/>:</th>
+                            <th><fmt:message key='total_cost'/>:</th>
 
                         </tr>
                         </thead>

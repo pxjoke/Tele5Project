@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Registration Page</h1>
+        <h1 class="page-header"><fmt:message key='registration_page'/></h1>
         <ol class="breadcrumb">
             <li><a href="index.html">Home</a>
             </li>
@@ -15,14 +15,14 @@
                 <fieldset>
                     <legend>Add new user</legend>
                     <div class="form-group">
-                        <label for="inputName" class="col-lg-2 control-label">Name</label>
+                        <label for="inputName" class="col-lg-2 control-label"><fmt:message key='name'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputName" class="form-control" name="name" placeholder="John Doe">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPhone" class="col-lg-2 control-label">Phone</label>
+                        <label for="inputPhone" class="col-lg-2 control-label"><fmt:message key='phone'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputPhone" class="form-control" name="phone"
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                        <label for="inputPassword" class="col-lg-2 control-label"><fmt:message key='signin.password'/></label>
 
                         <div class="col-lg-9">
                             <input type="password" id="inputPassword" class="form-control" name="password"
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputRole" class="col-lg-2 control-label">Role</label>
+                        <label for="inputRole" class="col-lg-2 control-label"><fmt:message key='role'/></label>
 
                         <div class="col-lg-9">
                             <select id="inputRole" class="form-control" name="role">
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputStatus" class="col-lg-2 control-label">Status</label>
+                        <label for="inputStatus" class="col-lg-2 control-label"><fmt:message key='status'/></label>
                         <%--<div class="col-lg-8 col-lg-offset-2">--%>
                         <%--<input type="checkbox" name="status" id="inputStatus" value="1">--%>
                         <%--<input type="checkbox" name="status"  value="0" hidden checked>--%>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary"><fmt:message key='submit'/></button>
                         </div>
                     </div>
                 </fieldset>

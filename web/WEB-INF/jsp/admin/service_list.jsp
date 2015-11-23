@@ -1,7 +1,7 @@
 <jsp:useBean id="services" scope="request" type="java.util.List<controllers.DAO.beans.Service>"/>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Services List <a class="btn btn-success" href="/admin/service_add">+ <i class="fa fa-asterisk"></i> </a> </h1>
+        <h1 class="page-header"><fmt:message key='service_list'/> <a class="btn btn-success" href="/admin/service_add">+ <i class="fa fa-asterisk"></i> </a> </h1>
         <hr>
     </div>
 </div>
@@ -17,13 +17,13 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Cost</th>
-                            <th>Type</th>
-                            <th>Minutes</th>
-                            <th>SMS</th>
-                            <th>Internet</th>
-                            <th>Edit</th>
+                            <th><fmt:message key='name'/></th>
+                            <th><fmt:message key='cost'/></th>
+                            <th><fmt:message key='type'/></th>
+                            <th><fmt:message key='minutes'/></th>
+                            <th><fmt:message key='sms'/></th>
+                            <th><fmt:message key='internet'/></th>
+                            <th><fmt:message key='edit'/></th>
                         </tr>
                         </thead>
                         <tbody>

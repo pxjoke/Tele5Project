@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">New Tariff Page</h1>
+        <h1 class="page-header"><fmt:message key='new_tariff.title'/></h1>
         <%--<ol class="breadcrumb">--%>
             <%--<li><a href="index.html">Home</a>--%>
             <%--</li>--%>
@@ -13,30 +13,30 @@
         <div class="well bs-component">
             <form class="form-horizontal" action="tariff_add" method="post">
                 <fieldset>
-                    <legend>Add new tariff</legend>
+                    <legend><fmt:message key='new_tariff.add_new'/></legend>
                     <div class="form-group">
-                        <label for="inputName" class="col-lg-2 control-label">Name</label>
+                        <label for="inputName" class="col-lg-2 control-label"><fmt:message key='name'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputName" class="form-control" name="name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputMinute" class="col-lg-2 control-label">Minute cost: </label>
+                        <label for="inputMinute" class="col-lg-2 control-label"><fmt:message key='account.minute_cost'/>: </label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputMinute" class="form-control" name="minutes">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputSMS" class="col-lg-2 control-label">SMS cost</label>
+                        <label for="inputSMS" class="col-lg-2 control-label"><fmt:message key='account.sms_cost'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputSMS" class="form-control" name="sms">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputInternet" class="col-lg-2 control-label">Internet cost</label>
+                        <label for="inputInternet" class="col-lg-2 control-label"><fmt:message key='account.internet_cost'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputInternet" class="form-control" name="internet">
@@ -45,7 +45,7 @@
 
 
                     <div class="form-group">
-                        <label for="inputPrice" class="col-lg-2 control-label">Price:</label>
+                        <label for="inputPrice" class="col-lg-2 control-label"><fmt:message key='price'/>:</label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputPrice" class="form-control" name="cost">
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputDescription" class="col-lg-2 control-label">Description:</label>
+                        <label for="inputDescription" class="col-lg-2 control-label"><fmt:message key='description'/>:</label>
 
                         <div class="col-lg-9">
                             <textarea id="inputDescription" class="form-control" rows="4" name="description"></textarea>
@@ -63,12 +63,12 @@
                         <div class="col-lg-8 col-lg-offset-2">
                             <input type="checkbox" name="user_status" id="inputStatus" value="2">
                             <input type="checkbox" name="user_status"  value="1" hidden checked>
-                            For VIP only
+                            <fmt:message key='account.for_vip_only'/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary"><fmt:message key='submit'/></button>
                         </div>
                     </div>
                 </fieldset>

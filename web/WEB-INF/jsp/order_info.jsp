@@ -19,11 +19,11 @@
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Cost</th>
-                        <th>Date</th>
+                        <th><fmt:message key='id'/></th>
+                        <th><fmt:message key='name'/></th>
+                        <th><fmt:message key='type'/></th>
+                        <th><fmt:message key='cost'/></th>
+                        <th><fmt:message key='date'/></th>
                     </tr>
                     </thead>
                     <tbody>

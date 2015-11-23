@@ -1,7 +1,7 @@
 <jsp:useBean id="tariffs" scope="request" type="java.util.List<controllers.DAO.beans.Tariff>"/>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Tariff List
+        <h1 class="page-header"><fmt:message key='tariffs'/>
             <c:if test="${user_session.role.equals('admin')}">
                 <a class="btn btn-success" href="/admin/tariff_add">+ <i class="fa fa-phone"></i></a>
             </c:if>
@@ -20,14 +20,14 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>User Status</th>
-                        <th>Minutes</th>
-                        <th>SMS</th>
-                        <th>Internet</th>
-                        <th>Service ID</th>
+                        <th><fmt:message key='name'/></th>
+                        <th><fmt:message key='status'/></th>
+                        <th><fmt:message key='minutes'/></th>
+                        <th><fmt:message key='sms'/></th>
+                        <th><fmt:message key='internet'/></th>
+                        <th><fmt:message key='service'/> ID</th>
                         <c:if test="${user_session.role.equals('admin')}">
-                            <th>Edit</th>
+                            <th><fmt:message key='edit'/></th>
                         </c:if>
                     </tr>
                     </thead>

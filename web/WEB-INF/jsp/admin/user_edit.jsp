@@ -1,7 +1,7 @@
 <jsp:useBean id="user" class="controllers.DAO.beans.User" scope="request" type="controllers.DAO.beans.User" />
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">User Update</h1>
+        <h1 class="page-header"><fmt:message key='user_update'/></h1>
         <ol class="breadcrumb">
             <li><a href="index.html">Home</a>
             </li>
@@ -17,21 +17,21 @@
                     <legend>Add new user</legend>
                     <input type="text" value="${user.id}" name="id" hidden>
                     <div class="form-group">
-                        <label for="inputName" class="col-lg-2 control-label">Name</label>
+                        <label for="inputName" class="col-lg-2 control-label"><fmt:message key='name'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputName" class="form-control" name="name" value="${user.name}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPhone" class="col-lg-2 control-label" >Phone</label>
+                        <label for="inputPhone" class="col-lg-2 control-label" ><fmt:message key='phone'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputPhone" class="form-control" name="phone" value="${user.phone}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                        <label for="inputPassword" class="col-lg-2 control-label"><fmt:message key='signin.password'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputPassword" class="form-control" name="password" value="${user.password}">
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputRole" class="col-lg-2 control-label">Role</label>
+                        <label for="inputRole" class="col-lg-2 control-label"><fmt:message key='role'/></label>
 
                             <div class="col-lg-9">
                                 <select id="inputRole" class="form-control" name="role" >
@@ -47,7 +47,7 @@
                                         <option>${user.role}</option>
                                     </c:if>
                                     <c:if test="${user_session.role.equals('admin')}">
-                                        <option>user</option>
+                                        <option><fmt:message key='user'/></option>
                                         <option>manager</option>
                                         <option>admin</option>
                                     </c:if>
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputStatus" class="col-lg-2 control-label">Status</label>
+                        <label for="inputStatus" class="col-lg-2 control-label"><fmt:message key='status'/></label>
                         <%--<div class="col-lg-8 col-lg-offset-2">--%>
                             <%--<input type="checkbox" name="status" id="inputStatus" value="1">--%>
                             <%--<input type="checkbox" name="status"  value="0" hidden checked>--%>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary"><fmt:message key='submit'/></button>
                         </div>
                     </div>
                 </fieldset>

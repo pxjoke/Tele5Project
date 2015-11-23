@@ -18,11 +18,11 @@
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Open</th>
-                        <th>Close</th>
-                        <th>Status</th>
-                        <th>Total price:</th>
+                        <th><fmt:message key='id'/></th>
+                        <th><fmt:message key='open'/></th>
+                        <th><fmt:message key='close'/></th>
+                        <th><fmt:message key='status'/></th>
+                        <th><fmt:message key='total_price'/>:</th>
 
                     </tr>
                     </thead>
