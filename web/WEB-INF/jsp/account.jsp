@@ -6,7 +6,7 @@
 
     <div class="col-lg-12">
         <h1 class="page-header">
-            Dashboard
+            <fmt:message key='account.dashboard'/>
         </h1>
         <hr>
     </div>
@@ -17,7 +17,7 @@
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-male fa-fw"></i> User Info</h3>
+                        <h3 class="panel-title"><i class="fa fa-male fa-fw"></i> <fmt:message key='account.user_info'/></h3>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
@@ -36,10 +36,10 @@
 
                                 <c:choose>
                                     <c:when test="${user_session.status == 0}">
-                                        <span class="badge">blocked</span>
+                                        <span class="badge"><fmt:message key='blocked'/></span>
                                     </c:when>
                                     <c:when test="${user_session.status == 1}">
-                                        <span class="badge">active</span>
+                                        <span class="badge"><fmt:message key='active'/></span>
                                     </c:when>
                                     <c:when test="${user_session.status == 2}">
                                         <span class="badge">vip</span>
@@ -57,12 +57,11 @@
                             <div class="list-group-item">
                                 <span class="badge"> ${account.totalPrice}$</span>
                                 <i class="fa fa-fw fa-credit-card"></i>
-                                <a href="/order_info?id=${account.id}">Current account: ${account.openDate}</a>
+                                <a href="/order_info?id=${account.id}"><fmt:message key='current_account'/>: ${account.openDate}</a>
                             </div>
                         </div>
                         <div class="text-left">
-                            <a href="/close_account" class="btn btn-info btn-sm"><i class="fa fa-credit-card"></i> close
-                                for ${account.totalPrice}$</a>
+                            <a href="/close_account" class="btn btn-info btn-sm"><i class="fa fa-credit-card"></i> <fmt:message key='close_for'/> ${account.totalPrice}$</a>
                         </div>
                     </div>
                 </div>
@@ -72,23 +71,23 @@
             <div class="col-lg-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> Free packs: </h3>
+                        <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> <fmt:message key='account.free_packs'/>: </h3>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
                             <div class="list-group-item list-group">
                                 <span class="badge"> <jsp:getProperty name="user" property="minutes"/></span>
-                                <i class="fa fa-fw fa-phone"></i> Free minutes:
+                                <i class="fa fa-fw fa-phone"></i> <fmt:message key='account.free_minutes'/>:
                             </div>
 
                             <div class="list-group-item list-group">
                                 <span class="badge"> <jsp:getProperty name="user" property="sms"/></span>
-                                <i class="fa fa-fw fa-envelope"></i> Free sms:
+                                <i class="fa fa-fw fa-envelope"></i> <fmt:message key='account.free_sms'/>:
                             </div>
 
                             <div class="list-group-item list-group">
                                 <span class="badge"> <jsp:getProperty name="user" property="internet"/></span>
-                                <i class="fa fa-fw fa-globe"></i> Free internet:
+                                <i class="fa fa-fw fa-globe"></i> <fmt:message key='account.free_internet'/>:
                             </div>
                         </div>
 
@@ -101,7 +100,7 @@
             <div class="col-lg-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> Services: </h3>
+                        <h3 class="panel-title"><i class="fa fa-bar-chart fa-fw"></i> <fmt:message key='services'/>: </h3>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -109,9 +108,9 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Cost</th>
-                                    <th>Edit</th>
+                                    <th><fmt:message key='name'/></th>
+                                    <th><fmt:message key='cost'/></th>
+                                    <th><fmt:message key='edit'/></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -135,23 +134,23 @@
             <div class="col-lg-6">
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-mobile-phone fa-fw"></i> Tariff "${tariff.name}" </h3>
+                        <h3 class="panel-title"><i class="fa fa-mobile-phone fa-fw"></i> <fmt:message key='tariff'/> "${tariff.name}" </h3>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
                             <div class="list-group-item list-group">
                                 <span class="badge"> <jsp:getProperty name="tariff" property="minutes"/></span>
-                                <i class="fa fa-fw fa-phone"></i> Minute cost:
+                                <i class="fa fa-fw fa-phone"></i> <fmt:message key='account.minute_cost'/>:
                             </div>
 
                             <div class="list-group-item list-group">
                                 <span class="badge"> <jsp:getProperty name="tariff" property="sms"/></span>
-                                <i class="fa fa-fw fa-envelope"></i> SMS cost:
+                                <i class="fa fa-fw fa-envelope"></i> <fmt:message key='account.sms_cost'/>:
                             </div>
 
                             <div class="list-group-item list-group">
                                 <span class="badge"> <jsp:getProperty name="tariff" property="internet"/></span>
-                                <i class="fa fa-fw fa-globe"></i> Mb cost:
+                                <i class="fa fa-fw fa-globe"></i> <fmt:message key='account.internet_cost'/>:
                             </div>
                         </div>
 
@@ -165,19 +164,19 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-tasks fa-fw"></i> Actions</h3>
+                <h3 class="panel-title"><i class="fa fa-tasks fa-fw"></i> <fmt:message key='account.actions'/></h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="spend" method="post">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Buy minutes</label>
+                        <label class="col-sm-3 control-label"><fmt:message key='minutes'/></label>
 
                         <div class="col-sm-9">
                             <input type="number" class="form-control" name="minutes">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Buy SMS</label>
+                        <label class="col-sm-3 control-label"><fmt:message key='sms'/></label>
 
                         <div class="col-sm-9">
                             <input type="number" class="form-control" name="sms">
@@ -185,7 +184,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Internet</label>
+                        <label class="col-sm-3 control-label"><fmt:message key='internet'/></label>
 
                         <div class="col-sm-9">
                             <input type="number" class="form-control" name="internet">
@@ -194,7 +193,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-9 text-right">
-                            <button type="submit" class="btn btn-danger">Buy</button>
+                            <button type="submit" class="btn btn-danger"><fmt:message key='account.buy'/></button>
                         </div>
                     </div>
                 </form>
