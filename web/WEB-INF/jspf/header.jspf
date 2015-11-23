@@ -63,10 +63,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/main">Home</a></li>
-                        <li><a href="/orders">Orders</a></li>
-                        <li><a href="/account">Account</a></li>
-                        <li><a href="/catalog">Catalog</a></li>
+                        <li><a href="/main"><fmt:message key="header.home"/></a></li>
+                        <li><a href="/orders"><fmt:message key="header.orders"/></a></li>
+                        <li><a href="/account"><fmt:message key="header.account"/></a></li>
+                        <li><a href="/catalog"><fmt:message key="header.catalog"/></a></li>
 
 
                         <%--<li><a href="/admin/tariff_list">Role  :  <c:out value="${user_session.role}" /></a></li>--%>
@@ -74,15 +74,15 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-haspopup="true"
-                                   aria-expanded="false">Administration<span class="caret"></span></a>
+                                   aria-expanded="false"><fmt:message key="header.administration"/><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <c:if test="${user_session.role.equals('admin')}">
-                                        <li><a href="/admin/service_list">Services</a></li>
+                                        <li><a href="/admin/service_list"><fmt:message key="services"/></a></li>
                                     </c:if>
-                                    <li><a href="/admin/user_list">Users</a></li>
-                                    <li><a href="/admin/tariff_list">Tariffs</a></li>
+                                    <li><a href="/admin/user_list"><fmt:message key="users"/></a></li>
+                                    <li><a href="/admin/tariff_list"><fmt:message key="tariffs"/></a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li class="dropdown-header">Role: ${user_session.role}</li>
+                                    <li class="dropdown-header"><fmt:message key="role"/>: ${user_session.role}</li>
                                 </ul>
                             </li>
                         </c:if>
@@ -94,12 +94,12 @@
                             <li><a href="/signin"><fmt:message key='signin'/></a></li>
                         </c:if>
                         <c:if test="${user_session.role != null}">
-                            <li><a href="/signout"><fmt:message key='signin'/></a></li>
+                            <li><a href="/signout"><fmt:message key='signout'/></a></li>
                         </c:if>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true"
-                               aria-expanded="false">Change Language<span class="caret"></span></a>
+                               aria-expanded="false"><fmt:message key='header.language'/><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/change_locale?locale=ru_RU">Русский</a></li>
                                 <li><a href="/change_locale?locale=en_US">English</a></li>

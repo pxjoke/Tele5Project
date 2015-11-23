@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Catalog
+            <fmt:message key='header.catalog'/>
         </h1>
         <hr>
     </div>
@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="well">
-    <h3>Tariffs</h3>
+    <h3><fmt:message key='tariffs'/></h3>
     <hr>
     <div class="row">
 
@@ -31,8 +31,7 @@
                         <hr>
                         <p>${tariff.description}</p>
                         <p>
-                            <a href="/buy?id=${tariff.id}" class="btn btn-primary btn-sm">Buy Now!</a> <a href="/admin/service_info?id=${tariff.id}" class="btn btn-default btn-sm">More
-                            Info</a>
+                            <a href="/buy?id=${tariff.id}" class="btn btn-primary btn-sm"><fmt:message key='buy_now'/></a> <a href="/admin/service_info?id=${tariff.id}" class="btn btn-default btn-sm"><fmt:message key='more_info'/></a>
                         </p>
                     </div>
                 </div>
@@ -40,7 +39,7 @@
         </c:forEach>
 
     </div>
-    <h3>Passive</h3>
+    <h3><fmt:message key='passive'/></h3>
     <hr>
 
     <div class="row">
@@ -57,15 +56,14 @@
                         <p>${pas.description}</p>
 
                         <p>
-                            <a href="/buy?id=${pas.id}" class="btn btn-primary btn-sm">Buy Now!</a> <a href="/admin/service_info?id=${pas.id}" class="btn btn-default btn-sm">More
-                            Info</a>
+                            <a href="/buy?id=${pas.id}" class="btn btn-primary btn-sm"><fmt:message key='buy_now'/></a> <a href="/admin/service_info?id=${pas.id}" class="btn btn-default btn-sm"><fmt:message key='more_info'/></a>
                         </p>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
-    <h3>Packages</h3>
+    <h3><fmt:message key='packages'/></h3>
     <hr>
 
     <div class="row">
@@ -82,8 +80,7 @@
                         <p>${pack.description}</p>
 
                         <p>
-                            <a href="/buy?id=${pack.id}" class="btn btn-primary btn-sm">Buy Now!</a> <a href="/admin/service_info?id=${pack.id}" class="btn btn-default btn-sm">More
-                            Info</a>
+                            <a href="/buy?id=${pack.id}" class="btn btn-primary btn-sm"><fmt:message key='buy_now'/></a> <a href="/admin/service_info?id=${pack.id}" class="btn btn-default btn-sm"><fmt:message key='more_info'/></a>
                         </p>
                     </div>
                 </div>

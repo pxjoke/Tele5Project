@@ -53,10 +53,18 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <input type="checkbox" name="status" id="inputStatus" value="1">
-                            <input type="checkbox" name="status"  value="0" hidden checked>
-                            Status VIP
+                        <label for="inputStatus" class="col-lg-2 control-label">Status</label>
+                        <%--<div class="col-lg-8 col-lg-offset-2">--%>
+                        <%--<input type="checkbox" name="status" id="inputStatus" value="1">--%>
+                        <%--<input type="checkbox" name="status"  value="0" hidden checked>--%>
+                        <%--Status VIP--%>
+                        <%--</div>--%>
+                        <div class="col-lg-9">
+                            <select id="inputStatus" class="form-control" name="status" >
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

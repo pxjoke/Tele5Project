@@ -1,17 +1,13 @@
 <div class="container">
 
     <form class="form-signin" action="j_security_check" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Email address"  name="j_username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="j_password" required>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <h2 class="form-signin-heading"><fmt:message key='signin.welcome'/></h2>
+        <label for="inputEmail" class="sr-only"><fmt:message key='phone'/></label>
+        <input type="text" id="inputEmail" class="form-control" placeholder="<fmt:message key='signin.phone'/>"  name="j_username" required autofocus>
+        <label for="inputPassword" class="sr-only"><fmt:message key='signin.password'/></label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="<fmt:message key='signin.password'/>" name="j_password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key='signin'/></button>
     </form>
 
 </div> <!-- /container -->
