@@ -32,7 +32,8 @@ public class ServiceEdit extends HttpServlet {
         String cost = request.getParameter("cost");
         String description = request.getParameter("description");
         String serviceId = request.getParameter("serviceId");
-
+        String img = request.getParameter("img");
+        String userStatus = request.getParameter("user_status");
 
         Service service = null;
         try {
@@ -42,9 +43,10 @@ public class ServiceEdit extends HttpServlet {
         }
 
         service.setDescription(description);
+        service.setImg(img);
 
         if(!service.getType().equals("tariff")){
-            if(name.isEmpty()){
+            if(name == null || name.isEmpty()){
                 response.sendRedirect("/validation_error.jsp");
                 return;
             }
@@ -63,13 +65,16 @@ public class ServiceEdit extends HttpServlet {
                 service.setMinutes(Integer.valueOf(minutes));
                 service.setInternet(Integer.valueOf(internet));
                 service.setSms(Integer.valueOf(sms));
+
             } catch (NumberFormatException e) {
                 response.sendRedirect("/validation_error.jsp");
                 return;
             }
         }
+        if(!service.getType().equals("tariff")){
 
-
+            service.setUserStatus(Integer.valueOf(userStatus));
+        }
 
 
         Connections.getFactory().getServiceDAO().updateById(Integer.valueOf(serviceId), service);

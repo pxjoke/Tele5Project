@@ -1,7 +1,8 @@
 <!-- Heading Row -->
 <div class="row">
     <div class="col-md-8">
-        <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">
+        <%--<img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">--%>
+        <img class="img-responsive img-rounded" src="/img/sample_900_350.png" alt="">
     </div>
     <!-- /.col-md-8 -->
     <div class="col-md-4">

@@ -1,6 +1,7 @@
 package controllers.DAO.MySQLDAO;
 
 import controllers.DAO.api.criteria.Criteria;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,10 +14,12 @@ import java.util.List;
  * Created by pxjok on 13.11.2015.
  */
 public abstract class MySQLAbstractCRUD<T> {
+    private static final Logger logger = Logger.getLogger(MySQLAbstractCRUD.class);
     public List<T> getListByCriteria(Criteria criteria) {
         List<T> list = new ArrayList<>();
         String criteriaExpression = (criteria == null) ? "" : criteria.getExpression();
         String sql = getSelectExpression() + criteriaExpression + getGroupBy() +  " ORDER BY " + getTable() + ".id;";
+        logger.debug("SELECT EXP: " + sql);
         try (Connection connection = MySQLDaoFactory.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
@@ -26,9 +29,10 @@ public abstract class MySQLAbstractCRUD<T> {
             }
 
         } catch (SQLException s) {
-            s.printStackTrace();
+//            s.printStackTrace();
+            logger.error("SQLException getListByCrit", s);
         }
-
+//        logger.error("SQLException getListByCrit");
         return list;
     }
 
@@ -39,11 +43,13 @@ public abstract class MySQLAbstractCRUD<T> {
     public boolean insert(T bean) {
         if (bean == null) return false;
         String sql = getInsertExpression(bean) + ";";
+        logger.debug("INSERT EXP: " + sql);
         try (Connection connection = MySQLDaoFactory.getConnection();
              Statement statement = connection.createStatement()) {
             return statement.executeUpdate(sql) > 0 ? true : false;
         } catch (SQLException s) {
-            s.printStackTrace();
+            logger.error("SQLException getListByCriteria", s);
+//            s.printStackTrace();
         }
         return false;
     }
@@ -56,7 +62,8 @@ public abstract class MySQLAbstractCRUD<T> {
             return statement.executeUpdate(sql) > 0 ? true : false;
 
         } catch (SQLException s) {
-            s.printStackTrace();
+            logger.error("SQLException getListByCrit", s);
+//            s.printStackTrace();
         }
         return false;
     }
@@ -65,12 +72,14 @@ public abstract class MySQLAbstractCRUD<T> {
         if (bean == null) return false;
         String criteriaExpression = (criteria == null) ? "" : criteria.getExpression();
         String sql = getUpdateExpression(bean) + criteriaExpression + ";";
+        logger.debug("UPD EXP: " + sql);
         try (Connection connection = MySQLDaoFactory.getConnection();
              Statement statement = connection.createStatement()) {
             return statement.executeUpdate(sql) > 0 ? true : false;
 
         } catch (SQLException s) {
-            s.printStackTrace();
+            logger.error("SQLException getListByCrit", s);
+//            s.printStackTrace();
         }
         return false;
     }

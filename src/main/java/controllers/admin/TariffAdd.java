@@ -55,6 +55,7 @@ public class TariffAdd extends HttpServlet {
         service.setType("tariff");
         service.setDescription(description);
         service.setName(name);
+        service.setUserStatus(Integer.valueOf(user_status));
 
         try {
             service.setCost(Double.valueOf(cost));

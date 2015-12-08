@@ -3,11 +3,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header"><fmt:message key='tariff_update'/></h1>
-        <%--<ol class="breadcrumb">--%>
-            <%--<li><a href="index.html">Home</a>--%>
-            <%--</li>--%>
-            <%--<li class="active">About</li>--%>
-        <%--</ol>--%>
+
     </div>
 </div>
 <div class="row">
@@ -17,7 +13,7 @@
                 <fieldset>
                     <legend>Add new tariff</legend>
                     <div class="form-group">
-                        <label for="inputName" class="col-lg-2 control-label"><fmt:message key='тфьу'/></label>
+                        <label for="inputName" class="col-lg-2 control-label"><fmt:message key='name'/></label>
 
                         <div class="col-lg-9">
                             <input type="text" id="inputName" class="form-control" value="${tariff.name}" name="name">
@@ -63,8 +59,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-8 col-lg-offset-2">
-                            <input type="checkbox" name="user_status" id="inputStatus" value="1">
-                            <input type="checkbox" name="user_status"  value="0" hidden checked>
+                            <input type="checkbox" name="user_status" id="inputStatus" value="2">
+                            <input type="checkbox" name="user_status"  value="1" hidden checked>
                             For VIP only
                         </div>
                     </div>

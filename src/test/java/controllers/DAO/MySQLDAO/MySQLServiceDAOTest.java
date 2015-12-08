@@ -22,6 +22,7 @@ public class MySQLServiceDAOTest {
         defaultService.setName("First blood!");
         defaultService.setDescription("Very good!");
         defaultService.setType("passive");
+        defaultService.setMinutes(0);
 
     }
 

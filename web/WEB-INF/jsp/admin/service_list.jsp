@@ -23,6 +23,7 @@
                             <th><fmt:message key='minutes'/></th>
                             <th><fmt:message key='sms'/></th>
                             <th><fmt:message key='internet'/></th>
+                            <th><fmt:message key='user_status'/></th>
                             <th><fmt:message key='edit'/></th>
                         </tr>
                         </thead>
@@ -37,6 +38,7 @@
                                 <td><c:out value="${service.minutes}"/></td>
                                 <td><c:out value="${service.sms}"/></td>
                                 <td><c:out value="${service.internet}"/></td>
+                                <td><c:out value="${service.userStatus}"/></td>
                                 <td>
                                     <a class="btn btn-warning btn-xs" href="/admin/service_edit?id=${service.id}"><i class="fa fa-edit"></i></a>
                                     <a class="btn btn-danger btn-xs" href="/admin/service_delete?id=${service.id}"><i class="fa fa-remove"></i></a>

@@ -32,21 +32,30 @@ public class ServiceAdd extends HttpServlet {
         String minutes = request.getParameter("minutes");
         String sms = request.getParameter("sms");
         String internet = request.getParameter("internet");
+        String img = request.getParameter("img");
+        String userStatus = request.getParameter("user_status");
 
         Service service = new Service();
         service.setType(type);
         service.setDescription(description);
+
         if(name.isEmpty()){
             response.sendRedirect("/validation_error.jsp");
             return;
         }
         service.setName(name);
 
+        if(img.isEmpty()){
+            service.setImg("sample.jpg");
+        }
+        service.setImg(img);
+
         try {
             service.setCost(Double.valueOf(cost));
             service.setMinutes(Integer.valueOf(minutes));
             service.setSms(Integer.valueOf(sms));
             service.setInternet(Integer.valueOf(internet));
+            service.setUserStatus(Integer.valueOf(userStatus));
         } catch (NumberFormatException e) {
             response.sendRedirect("/validation_error.jsp");
             return;

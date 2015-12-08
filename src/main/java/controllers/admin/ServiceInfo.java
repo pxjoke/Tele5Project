@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * Created by pxjok on 18.11.2015.
  */
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"user", "manager","admin"}))
 @WebServlet(name = "service_info", urlPatterns = "/admin/service_info")
 public class ServiceInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

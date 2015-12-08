@@ -4,7 +4,7 @@
 
     <div class="col-lg-12">
         <h1 class="page-header">
-            Order info <span class="btn btn-info"><i class="fa fa-credit-card"></i> ${account.totalPrice}$</span>
+            Order info <span class="text-success"><i class="fa fa-credit-card"></i> ${account.totalPrice}$</span>
         </h1>
         <hr>
     </div>

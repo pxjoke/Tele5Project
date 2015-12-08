@@ -1,11 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header"><fmt:message key='servise.new_service_page'/></h1>
-        <%--<ol class="breadcrumb">--%>
-            <%--<li><a href="index.html">Home</a>--%>
-            <%--</li>--%>
-            <%--<li class="active">About</li>--%>
-        <%--</ol>--%>
+
     </div>
 </div>
 <div class="row">
@@ -19,6 +15,14 @@
 
                         <div class="col-lg-9">
                             <input type="text" id="inputName" class="form-control" name="name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputImg" class="col-lg-2 control-label"><fmt:message key='image'/>:</label>
+
+                        <div class="col-lg-9">
+                            <input type="text" id="inputImg" class="form-control" name="img">
                         </div>
                     </div>
 
@@ -72,6 +76,14 @@
                                 <option>passive</option>
                                 <option>package</option>
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <input type="checkbox" name="user_status" id="inputStatus" value="2">
+                            <input type="checkbox" name="user_status"  value="1" hidden checked>
+                            <fmt:message key='account.for_vip_only'/>
                         </div>
                     </div>
                     <div class="form-group">

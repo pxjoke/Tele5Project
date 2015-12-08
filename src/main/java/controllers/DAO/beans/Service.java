@@ -13,6 +13,15 @@ public class Service {
     private int sms;
     private int internet;
     private int userStatus;
+    private String img;
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public int getUserStatus() {
         return userStatus;
@@ -97,6 +106,8 @@ public class Service {
                 ", minutes=" + minutes +
                 ", sms=" + sms +
                 ", internet=" + internet +
+                ", userStatus=" + userStatus +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

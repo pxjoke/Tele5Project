@@ -2,11 +2,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Service edit</h1>
-        <%--<ol class="breadcrumb">--%>
-        <%--<li><a href="index.html">Home</a>--%>
-        <%--</li>--%>
-        <%--<li class="active">About</li>--%>
-        <%--</ol>--%>
+
     </div>
 </div>
 <div class="row">
@@ -24,6 +20,15 @@
                                     <c:if test="${service.type.equals('tariff')}">disabled</c:if>>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="inputImg" class="col-lg-2 control-label"><fmt:message key='image'/>:</label>
+
+                        <div class="col-lg-9">
+                            <input type="text" id="inputImg" class="form-control" name="img" value="${service.img}">
+                        </div>
+                    </div>
+
                     <c:if test="${service.type.equals('package')}">
                         <div class="form-group">
                             <label for="inputMinute" class="col-lg-2 control-label">Minute cost: </label>
@@ -68,14 +73,16 @@
                         </div>
                     </div>
 
+                    <c:if test="${!service.type.equals('tariff')}">
+                        <div class="form-group">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <input type="checkbox" name="user_status" id="inputStatus" value="2">
+                                <input type="checkbox" name="user_status"  value="1" hidden checked>
+                                <fmt:message key='account.for_vip_only'/>
+                            </div>
+                        </div>
+                    </c:if>
 
-                    <%--<div class="form-group">--%>
-                    <%--<div class="col-lg-8 col-lg-offset-2">--%>
-                    <%--<input type="checkbox" name="userStatus" id="inputStatus" value="1">--%>
-                    <%--<input type="checkbox" name="userStatus"  value="0" hidden checked>--%>
-                    <%--For VIP only--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
                     <input type="text" name="serviceId" value="${service.id}" hidden>
 
                     <div class="form-group">

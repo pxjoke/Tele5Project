@@ -23,7 +23,7 @@
         <div class="well">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">
+                    <img class="img-responsive img-rounded" src="/img/sample_900_350.png" alt="">
                 </div>
             </div>
             <hr/>

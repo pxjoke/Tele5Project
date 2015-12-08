@@ -18,7 +18,8 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
     private static final String table = "services";
     private static final String columns = table + ".id, " + table + ".name, " +
             table + ".cost, " + table + ".description, " + table + ".type, "
-            + table + ".minutes, "+ table + ".sms, " + table + ".internet";
+            + table + ".minutes, "+ table + ".sms, " + table + ".internet, " + table + ".img, "+
+            table + ".user_status";
 
     @Override
     protected String parseBeanForUpdate(Service bean) {
@@ -29,7 +30,9 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
         tmp.append("type=" + toQuote(bean.getType()) + ", ");
         tmp.append("minutes=" + bean.getMinutes() + ", ");
         tmp.append("sms=" + bean.getSms() + ", ");
-        tmp.append("internet=" + bean.getInternet());
+        tmp.append("img=" + toQuote(bean.getImg()) + ", ");
+        tmp.append("internet=" + bean.getInternet() + ", ");
+        tmp.append("user_status=" + bean.getUserStatus());
         return tmp.toString();
     }
 
@@ -43,7 +46,9 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
         tmp.append(toQuote(bean.getType()) + ", ");
         tmp.append(bean.getMinutes() + ", ");
         tmp.append(bean.getSms() + ", ");
-        tmp.append(bean.getInternet());
+        tmp.append(bean.getInternet() + ", ");
+        tmp.append(toQuote(bean.getImg()) + ", ");
+        tmp.append(bean.getUserStatus());
         return tmp.toString();
     }
 
@@ -98,6 +103,8 @@ public class MySQLServiceDAO extends MySQLAbstractCRUD<Service> implements Servi
         service.setMinutes(resultSet.getInt("minutes"));
         service.setSms(resultSet.getInt("sms"));
         service.setInternet(resultSet.getInt("internet"));
+        service.setImg(resultSet.getString("img"));
+        service.setUserStatus(resultSet.getInt("user_status"));
         return service;
     }
 }

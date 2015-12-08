@@ -9,11 +9,7 @@
         <hr>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <img class="img-responsive" src="http://placehold.it/1200x300" alt="">
-    </div>
-</div>
+
 <div class="well">
     <h3><fmt:message key='tariffs'/></h3>
     <hr>
@@ -22,7 +18,7 @@
         <c:forEach items="${tariffs}" var="tariff" varStatus="t">
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/242x200" alt="">
+                    <img src="/img/${tariff.img}">
 
                     <div class="caption">
                         <h3>${tariff.name}
@@ -36,6 +32,8 @@
                     </div>
                 </div>
             </div>
+
+
         </c:forEach>
 
     </div>
@@ -46,7 +44,7 @@
         <c:forEach items="${passive}" var="pas" varStatus="p">
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/242x200" alt="">
+                    <img src="/img/${pas.img}" alt="">
 
                     <div class="caption">
                         <h3>${pas.name}
@@ -70,7 +68,7 @@
         <c:forEach items="${packages}" var="pack" varStatus="p">
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/242x200" alt="">
+                    <img src="/img/${pack.img}" alt="">
 
                     <div class="caption">
                         <h3>${pack.name}

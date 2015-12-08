@@ -15,7 +15,7 @@
         <div class="well">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">
+                    <img class="img-responsive img-rounded" src="/img/sample_900_350.png" alt="">
                 </div>
             </div>
             <hr/>
@@ -85,7 +85,7 @@
                         accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
                 </div>
                 <div class="panel-footer">
-                    <a href="" class="btn btn-success">Buy for ${service.cost}$</a>
+                    <a href="" class="text-success huge">${service.cost}$</a>
                     <c:if test="${user_session.role.equals('admin')}">
                         <div class="pull-right">
                             <a href="/admin/tariff_edit?id=${tariff.id}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
